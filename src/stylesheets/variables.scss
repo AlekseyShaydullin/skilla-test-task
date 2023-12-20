@@ -1,0 +1,69 @@
+/* Ширина контента */
+$max-content-width: 1440px;
+$min-content-width: 320px;
+
+/**
+* Цветовая схема приложения
+**/
+
+/* Цвет типографики */
+$text-primary: #122945;
+$text-header: #899CB1;
+$text-secondary: #5E7793;
+$text-green: #00A775;
+$text-black: #2B2D33;
+
+/* Цвет UI */
+$ui-icon: #ADBFDF;
+$ui-light-green: #DBF8EF;
+$ui-light-red: #EA1A4F;
+$ui-secondary: #D8E4FB;
+$ui-green: #28A879;
+$ui-blue: #005FF8;
+$ui-accent: #002CFB;
+$ui-background-dropdown: #DEE4FF;
+$ui-background-player: #EAF0FA;
+
+/**
+* Размеры Типографики
+**/
+
+/* Переменные жирности шрифта */
+$normal: 400;
+
+/* Переменные размеров шрифта  */
+$l-font-size: 15px;
+$m-font-size: 14px;
+$s-font-size: 12px;
+
+/* Переменные высоты строки */
+$xl-line-height: 148%;
+$l-line-height: 145%;
+$m-line-height: 140%;
+$s-line-height: 114%;
+$xs-line-height: 100%;
+
+/**
+* Переменные радиуса скругления
+**/
+
+$border-radius-circle: 50%;
+$l-border-radius: 48px;
+$m-border-radius: 8px;
+$s-border-radius: 4px;
+
+/**
+* Переменные тени элемента
+**/
+
+$page-shadow: 0px 4px 5px 0px rgba(233, 237, 243, 1);
+$small-dropdown-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+$big-dropdown-shadow: 0px 0px 26px 0px rgba(233, 237, 243, 0.8);
+
+/**
+* Курсор
+**/
+
+$cursor: url('../assets/icons/cursor.svg'), pointer;
+
+

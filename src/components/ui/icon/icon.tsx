@@ -2,13 +2,29 @@ import { FC, useId } from 'react';
 import { useSvgImport } from '../../../utils/hooks/useSvgImport';
 
 export interface IIcon {
-  /** Строка для идентификации иконки. Прокидываем название иконки. */
+  /**
+   * Строка для идентификации иконки. Прокидываем название иконки.
+   * */
   name: string;
-  /** Можно ли управлять цветом иконки через css. Запрещено, например, для многоцветных иконок */
+  /**
+   * Можно ли управлять цветом иконки через css. Запрещено, например, для многоцветных иконок
+   * */
   isColored: boolean;
-  /** Cтилизация иконки: цвет, размер, дополнительные анимации */
+  /**
+   * Cтилизация иконки: цвет, размер, дополнительные анимации
+   * */
   extraClass?: string;
 }
+
+/**
+ * Компонент-обёртка для Иконок
+ * @example
+ * <Icon
+ *  name="avatar"
+ *  isColored={false}
+ *  extraClass={style.icon}
+ * />
+ **/
 
 const Icon: FC<IIcon> = ({ name, extraClass, isColored }) => {
   const filterId = useId();

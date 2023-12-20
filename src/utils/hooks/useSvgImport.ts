@@ -1,11 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * Кастомный хук для получения иконки.
+ * В пропсе получаем название иконки.
+ * Возвращаем Ref с ссылкой на иконку
+ * И два состояния:
+ * Загрузка: loading
+ * Ошибка: error
+ **/
+
 export function useSvgImport(name: string) {
   const importedIconRef = useRef<string>('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>();
-
-  console.log(name);
 
   useEffect(() => {
     setLoading(true);

@@ -1,0 +1,41 @@
+@use '../../../stylesheets/variables.scss' as *;
+@use '../../../stylesheets/mixins' as *;
+
+@mixin Typography {
+  margin: 0;
+  font-weight: $normal;
+}
+
+@mixin h2 {
+  @include Typography;
+  font-size: $m-font-size;
+  line-height: $xl-line-height;
+  color: $text-secondary;
+}
+
+@mixin p {
+  @include Typography;
+  font-size: $l-font-size;
+  line-height: $l-line-height;
+}
+
+@mixin span {
+  @include Typography;
+  font-size: $l-font-size;
+  line-height: $m-line-height;
+}
+
+
+.primary {
+  &_h2 {
+    @include h2;
+  }
+
+  &_p {
+    @include p;
+  }
+
+  &_span {
+    @include span;
+  }
+}
