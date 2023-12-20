@@ -1,15 +1,14 @@
-import Typography from '../ui/Typography/Typography';
-import Icon from '../ui/icon/icon';
-import style from './App.module.scss';
+import { Route, Routes } from 'react-router-dom';
+import routesUrl from '../../utils/routes/routesUrl';
+import Calls from '../../pages/calls/calls';
+import NotFound from '../../pages/not-found';
 
 function App() {
   return (
-    <>
-      <Typography tag="h2" className={style.title}>
-        Привет тест
-      </Typography>
-      <Icon name="avatar" isColored={false} />
-    </>
+    <Routes>
+      <Route path={routesUrl.callsPage} element={<Calls />}></Route>
+      <Route path={routesUrl.notFound} element={<NotFound />} />
+    </Routes>
   );
 }
 
