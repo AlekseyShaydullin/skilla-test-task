@@ -1,0 +1,20 @@
+@use '../../../../stylesheets/variables.scss' as *;
+@use '../../../../stylesheets/mixins' as *;
+
+.button {
+  @include button-style-reset;
+  @include flex(row, space-between, center, 4px);
+
+}
+
+.icon {
+  width: 18px;
+  height: 21px;
+  color: $ui-icon;
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+
+.title:hover {
+  color: $text-hover
+}

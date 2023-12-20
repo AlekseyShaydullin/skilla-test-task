@@ -1,0 +1,10 @@
+@use '../../stylesheets/variables.scss' as *;
+@use '../../stylesheets/mixins' as *;
+
+.wrapper {
+  @include flex(row, space-between, center);
+  height: 24px;
+  margin-top: 80px;
+  margin-bottom: 16px;
+  background-color: $ui-background-player;
+}

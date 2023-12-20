@@ -1,17 +1,16 @@
 import { FC } from 'react';
 
 import style from './calls.module.scss';
-import Typography from '../../components/ui/typography/Typography';
-import Icon from '../../components/ui/icon/icon';
+import Header from '../../components/header/header';
 
 const Calls: FC = (): JSX.Element => {
   return (
-    <>
-      <Typography tag="h2" className={style.title}>
-        Привет тест
-      </Typography>
-      <Icon name="avatar" isColored={false} />
-    </>
+    <main className={style.calls__wrapper}>
+      <Header />
+      <section className={style.table}>
+        <h1>Привет</h1>
+      </section>
+    </main>
   );
 };
 

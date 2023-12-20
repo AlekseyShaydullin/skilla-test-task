@@ -1,6 +1,13 @@
 @use '../../stylesheets/variables.scss' as *;
 @use '../../stylesheets/mixins' as *;
 
-.title {
-  color: aqua;
+.calls__wrapper {
+  @include flex(column);
+  max-width: 100%;
+}
+
+.table {
+  border-radius: $m-border-radius;
+  background-color: #fff;
+  box-shadow: $page-shadow;
 }
