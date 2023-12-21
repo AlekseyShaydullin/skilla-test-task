@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { forwardRef } from 'react';
 import cn from 'classnames';
 import Typography from '../../typography/Typography';
 import style from './buttonIconText.module.scss';
@@ -6,7 +6,7 @@ import Icon from '../../icon/icon';
 
 interface IButtonIconText {
   /**
-   * Укажите название иконки
+   * Укажите название файла иконки, без его расширения
    */
   icon: string;
   /**
@@ -25,9 +25,7 @@ interface IButtonIconText {
    * Cтилизация самой кнопки: цвет, размер, дополнительные анимации
    * */
   buttonClass?: string;
-  /**
-   * Cтилизация иконки: цвет, размер, дополнительные анимации
-   * */
+  /** Cтилизация иконки: цвет, размер, дополнительные анимации */
   iconClass?: string;
   /**
    * Cтилизация текста: цвет, размер, ховеры
@@ -37,39 +35,61 @@ interface IButtonIconText {
    * Можно управлять стилизацией. Иконка первая? тогда пиши true
    * */
   iconFirst: boolean;
+  onClick: VoidFunction;
 }
+
+type Ref = HTMLButtonElement;
 
 /**
  * Компонент-обёртка для кнопок с иконками и текстом
  * @example
- * <ButtonIconText icon="chevron" tag="h2" title="Название кнопки" isColored={true} extraClass={style.icon} iconFirst={true} />
+ * <ButtonIconText
+ *    icon="chevron"
+ *    tag="h2"
+ *    title="Название кнопки"
+ *    isColored={true}
+ *    buttonClass={style.button}
+ *    iconClass={style.icon}
+ *    titleClass={style.title}
+ *    iconFirst={true}
+ * />
  */
 
-const ButtonIconText: FC<IButtonIconText> = ({
-  icon,
-  tag,
-  title,
-  buttonClass,
-  iconClass,
-  titleClass,
-  isColored,
-  iconFirst,
-}) => {
-  return (
-    <button className={cn(style[`button`], buttonClass)}>
-      {!iconFirst && (
-        <Typography tag={tag} className={titleClass}>
-          {title}
-        </Typography>
-      )}
-      <Icon name={icon} isColored={isColored} extraClass={iconClass} />
-      {iconFirst && (
-        <Typography tag={tag} className={titleClass}>
-          {title}
-        </Typography>
-      )}
-    </button>
-  );
-};
+const ButtonIconText = forwardRef<Ref, IButtonIconText>(
+  (
+    {
+      icon,
+      tag,
+      title,
+      buttonClass,
+      iconClass,
+      titleClass,
+      isColored,
+      iconFirst,
+      onClick,
+    },
+    ref
+  ) => {
+    return (
+      <button
+        className={cn(style[`button`], buttonClass)}
+        onClick={onClick}
+        ref={ref}
+      >
+        {!iconFirst && (
+          <Typography tag={tag} className={titleClass}>
+            {title}
+          </Typography>
+        )}
+        <Icon name={icon} isColored={isColored} extraClass={iconClass} />
+        {iconFirst && (
+          <Typography tag={tag} className={titleClass}>
+            {title}
+          </Typography>
+        )}
+      </button>
+    );
+  }
+);
 
 export default ButtonIconText;

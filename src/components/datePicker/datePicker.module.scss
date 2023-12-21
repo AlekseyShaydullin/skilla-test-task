@@ -1,7 +1,7 @@
 @use '../../stylesheets/variables.scss' as *;
 @use '../../stylesheets/mixins' as *;
 
-.wrapper {
+.datePicker__wrapper {
   @include flex(row, space-between, center, 12px);
 }
 

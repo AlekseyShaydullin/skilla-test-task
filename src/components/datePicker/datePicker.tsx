@@ -13,7 +13,7 @@ import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
 
 const DatePicker: FC = () => {
   return (
-    <section className={style.wrapper}>
+    <section className={style.datePicker__wrapper}>
       <ButtonIcon
         icon="chevron"
         isColored={true}
@@ -23,11 +23,11 @@ const DatePicker: FC = () => {
         icon="calendar"
         tag="h2"
         title="3 дня"
-        isColored={true}
+        isColored
         buttonClass={style.button}
         iconClass={style.iconCalendar}
         titleClass={style.title}
-        iconFirst={true}
+        iconFirst
       />
       <ButtonIcon
         icon="chevron"

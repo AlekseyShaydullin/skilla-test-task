@@ -2,11 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 
 /**
  * Кастомный хук для получения иконки.
- * В пропсе получаем название иконки.
- * Возвращаем Ref с ссылкой на иконку
- * И два состояния:
- * Загрузка: loading
- * Ошибка: error
+ * @param name Передаём название файла иконки, без расширения.
+ * @param Ref Возвращаем  с ссылкой на иконку
+ * @param loading Возвращаем состояние загрузки
+ * @param error Возвращаем состояние ошибки
  **/
 
 export function useSvgImport(name: string) {

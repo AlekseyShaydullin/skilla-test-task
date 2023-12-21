@@ -13,6 +13,7 @@ $text-secondary: #5E7793;
 $text-green: #00A775;
 $text-black: #2B2D33;
 $text-hover: #1F46FB;
+$text-check: #015EF5;
 
 /* Цвет UI */
 $ui-icon: #ADBFDF;
@@ -24,6 +25,8 @@ $ui-blue: #005FF8;
 $ui-accent: #002CFB;
 $ui-background-dropdown: #DEE4FF;
 $ui-background-player: #EAF0FA;
+
+$white: #fff;
 
 /**
 * Размеры Типографики
@@ -38,6 +41,7 @@ $m-font-size: 14px;
 $s-font-size: 12px;
 
 /* Переменные высоты строки */
+$xxl-line-height: 150%;
 $xl-line-height: 148%;
 $l-line-height: 145%;
 $m-line-height: 140%;

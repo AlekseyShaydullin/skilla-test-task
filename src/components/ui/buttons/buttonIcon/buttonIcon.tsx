@@ -4,7 +4,7 @@ import style from './buttonIcon.module.scss';
 
 interface IButtonIcon {
   /**
-   * Укажите название иконки
+   * Укажите название файла иконки, без его расширения
    */
   icon: string;
   /**
