@@ -1,13 +1,32 @@
 import { FC } from 'react';
-import Typography from '../../typography/Typography';
-import style from './buttonIcon.module.scss';
 import Icon from '../../icon/icon';
+import style from './buttonIcon.module.scss';
 
-const ButtonIcon: FC = () => {
+interface IButtonIcon {
+  /**
+   * Укажите название иконки
+   */
+  icon: string;
+  /**
+   * Если иконка монохромная укажите значение true
+   * */
+  isColored: boolean;
+  /**
+   * Cтилизация иконки: цвет, размер, дополнительные анимации
+   * */
+  extraClass?: string;
+}
+
+/**
+ * Компонент-обёртка для кнопок с иконками без текста
+ * @example
+ * <ButtonIcon icon="chevron" isColored={true} extraClass={style.icon} />
+ */
+
+const ButtonIcon: FC<IButtonIcon> = ({ icon, extraClass, isColored }) => {
   return (
     <button className={style.button}>
-      <Typography tag="h2">Все типы</Typography>
-      <Icon name="chevron" isColored extraClass={style.icon} />
+      <Icon name={icon} extraClass={extraClass} isColored={isColored} />
     </button>
   );
 };

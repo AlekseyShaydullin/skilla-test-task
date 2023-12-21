@@ -4,7 +4,7 @@ import style from './typography.module.scss';
 
 interface IProps {
   /**
-   * тэг-обёртка `'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'`
+   * тэг-обёртка `'h2' | 'p' | 'span'`
    */
   tag: 'h2' | 'p' | 'span';
   children: ReactNode;
@@ -13,6 +13,7 @@ interface IProps {
    */
   className?: string;
   /**
+   * По умолчанию стоит `primary`
    * `primary` === `SF Pro Display`, `secondary` === На перспективу для масштабирования
    */
   fontFamily?: 'primary' | 'secondary';
@@ -21,7 +22,7 @@ interface IProps {
 /**
  * Компонент-обёртка для текстовых элементов
  * @example
- * <Typography tag="h2" fontFamily="secondary">
+ * <Typography tag="h2" fontFamily="secondary" className={style.title}>
  *  Выводимый текст
  * </Typography>
  */

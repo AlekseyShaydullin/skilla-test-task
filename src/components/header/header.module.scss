@@ -8,3 +8,18 @@
   margin-bottom: 16px;
   background-color: $ui-background-player;
 }
+
+.icon {
+  width: 18px;
+  height: 21px;
+  color: $ui-icon;
+  transform: rotate(180deg);
+}
+
+.title {
+  color: $text-secondary;
+}
+
+.title:hover {
+  color: $text-hover
+}

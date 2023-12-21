@@ -1,0 +1,46 @@
+@use '../../stylesheets/variables.scss' as *;
+@use '../../stylesheets/mixins' as *;
+
+.wrapper {
+  @include flex(row, space-between, center, 12px);
+}
+
+.iconChevronLeft {
+  width: 18px;
+  height: 21px;
+  color: $ui-icon;
+  transform: rotate(270deg);
+}
+
+.iconCalendar {
+  width: 16px;
+  height: 18px;
+  color: $ui-icon;
+}
+
+.titleCalendar {
+  color: $ui-icon;
+}
+
+.iconChevronRight {
+  width: 18px;
+  height: 21px;
+  color: $ui-icon;
+  transform: rotate(90deg);
+}
+
+.title {
+  color: $ui-accent;
+}
+
+.button:hover .iconCalendar {
+  color: $ui-accent;
+}
+
+.iconChevronLeft:hover {
+  color: $ui-accent;
+}
+
+.iconChevronRight:hover {
+  color: $ui-accent;
+}

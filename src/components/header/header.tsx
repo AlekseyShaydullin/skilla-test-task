@@ -1,12 +1,21 @@
 import { FC } from 'react';
 import style from './header.module.scss';
-import ButtonIcon from '../ui/buttons/buttonIcon/buttonIcon';
+import DatePicker from '../datePicker/datePicker';
+import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
 
 const Header: FC = () => {
   return (
     <header className={style.wrapper}>
-      <ButtonIcon />
-      <button>3 дня</button>
+      <ButtonIconText
+        icon="chevron"
+        tag="h2"
+        title="Все типы"
+        iconClass={style.icon}
+        titleClass={style.title}
+        isColored={true}
+        iconFirst={false}
+      />
+      <DatePicker />
     </header>
   );
 };
