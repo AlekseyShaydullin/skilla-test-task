@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import style from './menu-item.module.scss';
-import { Option } from '../../../utils/types/common';
+import { IOptions } from '../../../utils/types/common';
 import Icon from '../icon/icon';
 
 interface IMenuItem {
-  option: Option;
+  option: IOptions;
   onClick: (value: string) => void;
   /** Чтобы перезаписать свойства MenuItem, в scss файле родителя повысьте селективность,
    * например: ```div.item { height: 30px;}``` */
@@ -32,7 +32,7 @@ const MenuItem: FC<IMenuItem> = ({
       className={
         option.value !== checkOption
           ? `${style.item} ${extraClass}`
-          : `${style.item} ${style.item_check} ${extraClass}`
+          : `${style.item} ${extraClass} ${style.check} `
       }
     >
       {' '}

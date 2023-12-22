@@ -2,29 +2,17 @@
 @use '../../../stylesheets/mixins' as *;
 
 .item {
-  @include font('SF Pro Display', $s-font-size, $normal, $text-black);
-  @include line-sizes($xxl-line-height);
   @include flex($align-items: center);
   box-sizing: border-box;
   padding: 7px 12px;
   transition: all 0.1s linear;
 
-  &_check {
-    color: $text-check;
-  }
-
   &:hover {
     cursor: $cursor;
     background-color: $ui-background-dropdown;
   }
-
-  // &:active {
-  //   cursor: $cursor;
-  //   background-color: $blue-disabled;
-  // }
 }
 
-// .icon {
-//   @include size(24px, 24px);
-// }
-
+div.check {
+  color: $text-check;
+}

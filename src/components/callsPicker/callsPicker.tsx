@@ -3,6 +3,7 @@ import style from './callsPicker.module.scss';
 import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
 import Menu from '../menu/menu';
 import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
+import { IOptions } from '../../utils/types/common';
 
 const CallsPicker: FC = () => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
@@ -27,22 +28,15 @@ const CallsPicker: FC = () => {
     setCallTypes('allTypes');
   };
 
-  const handleOptionClick = (e: string) => {
+  const handleOptionClick = (e: string, options: Array<IOptions>) => {
+    const optionClick = options.find((option) => option.value === e);
+
     setShowDropDown(false);
-    if (e === 'allTypes') {
-      setCallTypes('allTypes');
-      console.log('allTypes');
-    }
-    if (e === 'incoming') {
-      setCallTypes('incoming');
-      console.log('incoming');
-    }
-    if (e === 'outgoing') {
-      setCallTypes('outgoing');
-      console.log('outgoing');
-    }
+    setCallTypes(optionClick!.value);
     setFilter(true);
   };
+
+  const titleButton = options.find((option) => option.value === callTypes);
 
   useOutsideClickAndEscape(
     menuRef,
@@ -53,19 +47,13 @@ const CallsPicker: FC = () => {
     buttonRef
   );
 
-  console.log(showDropDown);
+  console.log(callTypes);
   return (
     <section className={style.filters}>
       <ButtonIconText
         icon="chevron"
         tag="h2"
-        title={
-          callTypes === 'allTypes'
-            ? 'Все типы'
-            : callTypes === 'incoming'
-              ? 'Входящие'
-              : 'Исходящие'
-        }
+        title={titleButton!.label}
         iconClass={!showDropDown ? style.icon : style.iconOpen}
         titleClass={
           filter ? `${style.title} ${style.title_filter}` : `${style.title}`
@@ -79,9 +67,10 @@ const CallsPicker: FC = () => {
         <Menu
           ref={menuRef}
           options={options}
-          onItemClick={(e) => handleOptionClick(e.value)}
+          onItemClick={(e) => handleOptionClick(e.value, options)}
           layoutClassName={style.dropdown}
           checkOption={callTypes}
+          itemClassName={style.itemParent}
         />
       )}
       {filter && (

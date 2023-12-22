@@ -10,6 +10,10 @@
   height: 21px;
   color: $ui-icon;
   transform: rotate(270deg);
+
+  &:hover {
+    color: $ui-accent;
+  }
 }
 
 .iconCalendar {
@@ -27,20 +31,41 @@
   height: 21px;
   color: $ui-icon;
   transform: rotate(90deg);
+
+  &:hover {
+    color: $ui-accent;
+  }
 }
 
 .title {
   color: $ui-accent;
 }
 
-.button:hover .iconCalendar {
-  color: $ui-accent;
+.button.button {
+  gap: 8px;
+
+  &:hover .iconCalendar {
+    color: $ui-accent;
+  }
 }
 
-.iconChevronLeft:hover {
-  color: $ui-accent;
+.dropdown__wrapper {
+  @include flex(row, $gap: 16px);
 }
 
-.iconChevronRight:hover {
-  color: $ui-accent;
+.dropdown{
+  @include flex(column);
+  width: 204px;
+  background-color: $white;
+  box-shadow: $big-dropdown-shadow;
+  border-radius: $s-border-radius;
+  position: absolute;
+  top: 26px;
+  right: 0px;
+  z-index: 2;
+}
+
+.itemParent {
+  @include font('SF Pro Display', $m-font-size, $normal, $text-header);
+  @include line-sizes($extra-line-height);
 }

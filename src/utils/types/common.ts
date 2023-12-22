@@ -8,8 +8,8 @@ export interface IRoutesUrl {
 /**
  * Типизация опций меню
  */
-export type Option = {
+export interface IOptions {
   label: string;
   value: string;
   icon?: string;
-};
+}
