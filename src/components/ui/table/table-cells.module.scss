@@ -1,0 +1,18 @@
+@use '../../../stylesheets/variables.scss' as *;
+@use '../../../stylesheets/mixins' as *;
+
+.wrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.text {
+  color: $text-secondary;
+}
+
+.iconChevron {
+  width: 18px;
+  height: 21px;
+  color: $ui-icon;
+  transform: rotate(180deg);
+}

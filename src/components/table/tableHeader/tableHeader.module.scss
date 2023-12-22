@@ -1,0 +1,25 @@
+@use '../../../stylesheets/variables.scss' as *;
+@use '../../../stylesheets/mixins' as *;
+
+.header__wrapper {
+  border-bottom: 1px solid $ui-background-player;
+}
+
+.cell {
+  @include font('SF Pro Display', $m-font-size, $normal, $text-secondary);
+  @include line-sizes($xl-line-height);
+  padding: 0;
+  text-align: left;
+  &:last-of-type {
+    text-align: right;
+  }
+}
+
+.iconChevron {
+  width: 18px;
+  height: 21px;
+  padding-right: 4px;
+  color: $ui-icon;
+  transform: rotate(180deg);
+  vertical-align: bottom;
+}

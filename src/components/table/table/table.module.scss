@@ -1,0 +1,9 @@
+@use '../../../stylesheets/variables.scss' as *;
+@use '../../../stylesheets/mixins' as *;
+
+.tableWrapper {
+  padding: 24px 40px;
+  border-radius: $m-border-radius;
+  background-color: #fff;
+  box-shadow: $page-shadow;
+}
