@@ -1,6 +1,6 @@
-import { IData } from './types/table';
+import { IResults } from './types/table';
 
-export const mokData: Array<IData> = [
+export const mokData: Array<IResults> = [
   {
     id: 7706478,
     partnership_id: '578',

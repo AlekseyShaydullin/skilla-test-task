@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import style from './tableBody.module.scss';
-import { IConfigRows, IData } from '../../../utils/types/table';
+import { IConfigRows, IResults } from '../../../utils/types/table';
 
 interface ITableBody {
-  data: Array<IData>;
+  data: Array<IResults>;
   rows: Array<IConfigRows>;
 }
 

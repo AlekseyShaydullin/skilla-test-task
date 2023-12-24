@@ -14,7 +14,7 @@ export interface IRefColumns {
   cellComponent: (data: string) => ReactNode;
 }
 
-export interface IData {
+export interface IResults {
   id: number;
   partnership_id: string;
   partner_data: {
@@ -82,9 +82,14 @@ export interface IData {
   candidate_vacancy_name: string;
 }
 
+export interface IData {
+  total_rows: string;
+  results: Array<IResults>;
+}
+
 export interface IConfigRows {
   style: {
     width: string;
   };
-  cellComponent: (data: IData) => ReactNode;
+  cellComponent: (data: IResults) => ReactNode;
 }

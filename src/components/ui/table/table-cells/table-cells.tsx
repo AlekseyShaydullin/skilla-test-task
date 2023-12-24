@@ -3,8 +3,7 @@ import cn from 'classnames';
 import style from './table-cells.module.scss';
 import Typography from '../../typography/Typography';
 import Icon from '../../icon/icon';
-import { IData } from '../../../../utils/types/table';
-import { mokData } from '../../../../utils/mok';
+import { IResults } from '../../../../utils/types/table';
 import { getRandom } from '../../../../utils/helpers/getRandom';
 import { fixPhoneNumber } from '../../../../utils/helpers/fixPhoneNumber';
 
@@ -40,7 +39,7 @@ export const baseHeaderIconCell = (data: string) => (
  * */
 
 /**Ячейка под колонку Тип */
-export const iconTypeCallCell = (data: IData) => (
+export const iconTypeCallCell = (data: IResults) => (
   <Icon
     name={data?.in_out === 1 ? 'call-incoming' : 'call-outgoing'}
     isColored
@@ -60,7 +59,7 @@ export const iconTypeCallCell = (data: IData) => (
 );
 
 /**Ячейка под колонку Время */
-export const timeCell: FC<IData> = (data) => {
+export const timeCell: FC<IResults> = (data) => {
   const time = data?.date.slice(10, 16);
 
   return (
@@ -71,7 +70,7 @@ export const timeCell: FC<IData> = (data) => {
 };
 
 /**Ячейка под колонку Сотрудник */
-export const avatarCell = (data: IData) => (
+export const avatarCell = (data: IResults) => (
   <img
     src={data?.person_avatar}
     alt="аватарка сотрудника"
@@ -80,7 +79,7 @@ export const avatarCell = (data: IData) => (
 );
 
 /**Ячейка под колонку Звонок */
-export const callCell: FC<IData> = (data) => {
+export const callCell: FC<IResults> = (data) => {
   return (
     <>
       {data?.contact_name && (
@@ -101,7 +100,7 @@ export const callCell: FC<IData> = (data) => {
 };
 
 /**Ячейка под колонку Источник */
-export const sourceCell = (data: IData) => (
+export const sourceCell = (data: IResults) => (
   <Typography tag="p" className={style.secondary}>
     {data?.source}
   </Typography>
@@ -153,12 +152,8 @@ export const ratingCell = () => {
 };
 
 /**Ячейка под колонку Длительность */
-// interface IDurationCell {
-//   data: IData;
-//   hover
-// }
 
-export const durationCell: FC<IData> = (data) => {
+export const durationCell: FC<IResults> = (data) => {
   const currentTime = data?.time;
   const minutes = Math.floor(currentTime / 60);
   const seconds = currentTime % 60;
@@ -174,12 +169,17 @@ export const durationCell: FC<IData> = (data) => {
         </audio>
       )}
       {currentTime === 0 && null}
-      {minutes === 0 && currentTime !== 0 && (
+      {minutes === 0 && currentTime !== 0 && currentTime < 10 && (
         <Typography tag="p" className={cn(style.primary, style.time)}>
           {`00:0${currentTime}`}
         </Typography>
       )}
-      {currentTime !== 0 && (
+      {minutes === 0 && currentTime !== 0 && currentTime >= 10 && (
+        <Typography tag="p" className={cn(style.primary, style.time)}>
+          {`00:${currentTime}`}
+        </Typography>
+      )}
+      {currentTime !== 0 && currentTime > 59 && (
         <Typography tag="p" className={cn(style.primary, style.time)}>
           {`0${minutes}:${seconds}`}
         </Typography>
@@ -192,11 +192,3 @@ export const durationCell: FC<IData> = (data) => {
     </div>
   );
 };
-
-mokData.map((data) => {
-  const phoneNumber = data?.from_number.replace(
-    /^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/,
-    '+$1 ($2) $3-$4-$5'
-  );
-  console.log(phoneNumber);
-});
