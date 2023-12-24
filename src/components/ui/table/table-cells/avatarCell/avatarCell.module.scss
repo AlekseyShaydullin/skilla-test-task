@@ -1,0 +1,9 @@
+@use '../../../../../stylesheets/variables.scss' as *;
+@use '../../../../../stylesheets/mixins' as *;
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: block;
+}

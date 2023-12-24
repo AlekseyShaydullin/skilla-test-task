@@ -1,0 +1,16 @@
+@use '../../../../../stylesheets/variables.scss' as *;
+@use '../../../../../stylesheets/mixins' as *;
+
+.secondary {
+  color: $text-secondary;
+}
+
+.primary {
+  color: $text-primary;
+}
+
+.callNumber {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

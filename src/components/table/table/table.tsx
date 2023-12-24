@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import style from './table.module.scss';
 import TableHeader from '../tableHeader/tableHeader';
-import { configRows, refColumns } from './tableConfig';
+import { configRows, configColumns } from './tableConfig';
 import TableBody from '../tableBody/tableBody';
 import { IResults } from '../../../utils/types/table';
 import { getCalls } from '../../../api/api';
@@ -19,7 +19,7 @@ const Table: FC = () => {
 
   return (
     <table className={style.tableWrapper}>
-      <TableHeader columns={refColumns} />
+      <TableHeader columns={configColumns} />
       {data && <TableBody data={data} rows={configRows} />}
     </table>
   );

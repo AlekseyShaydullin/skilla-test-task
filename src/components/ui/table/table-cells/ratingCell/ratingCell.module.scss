@@ -1,0 +1,41 @@
+@use '../../../../../stylesheets/variables.scss' as *;
+@use '../../../../../stylesheets/mixins' as *;
+
+.primary {
+  color: $text-primary;
+}
+
+.red {
+  color: $ui-light-red;
+}
+
+.green {
+  color: $text-green;
+}
+
+.grade {
+  width: 55px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  text-align: center;
+
+  &_grate {
+    border: 1px solid #28A879;
+    background: #DBF8EF;
+  }
+
+  &_good {
+    border: 1px solid #ADBFDF;
+    background: #D8E4FB;
+  }
+
+  &_bad {
+    border: 1px solid #EA1A4F;
+    background: #FEE9EF;
+  }
+
+  &__text {
+    font-size: $m-font-size;
+    line-height: $xs-line-height;
+  }
+}

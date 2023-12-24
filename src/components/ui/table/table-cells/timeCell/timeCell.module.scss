@@ -1,0 +1,6 @@
+@use '../../../../../stylesheets/variables.scss' as *;
+@use '../../../../../stylesheets/mixins' as *;
+
+.primary {
+  color: $text-primary;
+}

@@ -1,0 +1,19 @@
+@use '../../../../../stylesheets/variables.scss' as *;
+@use '../../../../../stylesheets/mixins' as *;
+
+.iconCall {
+  width: 24px;
+  height: 24px;
+
+  &_blue {
+    color: $ui-accent;
+  }
+
+  &_green {
+    color: $ui-green;
+  }
+
+  &_red {
+    color: $ui-light-red;
+  }
+}

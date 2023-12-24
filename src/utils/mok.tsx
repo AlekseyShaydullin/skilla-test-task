@@ -110,7 +110,7 @@ export const mokData: Array<IResults> = [
 
 export const filterData = [
   {
-    typeCall: 'Входящие' || 'Исходящие' || 'Пропущенный' || 'Недозвон ',
+    typeCall: 'Входящие' || 'Исходящие' || 'Пропущенный' || 'Недозвон',
     time: '18:47', //date
     employee: 'https://lk.skilla.ru/img/noavatar.jpg', //person_avatar
     call: '79602891748', //from_number
