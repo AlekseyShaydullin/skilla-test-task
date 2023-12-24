@@ -1,17 +1,17 @@
 @use '../../../stylesheets/variables.scss' as *;
 @use '../../../stylesheets/mixins' as *;
 
-.header__wrapper {
-  border-bottom: 1px solid $ui-background-player;
-}
-
 .cell {
   @include font('SF Pro Display', $m-font-size, $normal, $text-secondary);
   @include line-sizes($xl-line-height);
-  padding: 0;
+  padding: 24px 0 20px;
   text-align: left;
-  &:last-of-type {
-    text-align: right;
+
+  &:first-child {
+    padding-left: 40px;
+  }
+  &:last-child {
+    padding-right: 40px;
   }
 }
 

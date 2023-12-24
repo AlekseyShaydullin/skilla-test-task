@@ -1,0 +1,122 @@
+@use '../../../../stylesheets/variables.scss' as *;
+@use '../../../../stylesheets/mixins' as *;
+
+.wrapper {
+  display: flex;
+  gap: 4px;
+
+  &_end {
+    justify-content: end;
+  }
+}
+
+.secondary {
+  color: $text-secondary;
+}
+
+.primary {
+  color: $text-primary;
+}
+
+.red {
+  color: $ui-light-red;
+}
+
+.green {
+  color: $text-green;
+}
+
+.iconChevron {
+  width: 18px;
+  height: 21px;
+  color: $ui-icon;
+  transform: rotate(180deg);
+}
+
+.iconCall {
+  width: 24px;
+  height: 24px;
+
+  &_blue {
+    color: $ui-accent;
+  }
+
+  &_green {
+    color: $ui-green;
+  }
+
+  &_red {
+    color: $ui-light-red;
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: block;
+}
+
+.callNumber {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grade {
+  width: 55px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  text-align: center;
+
+  &_grate {
+    border: 1px solid #28A879;
+    background: #DBF8EF;
+  }
+
+  &_good {
+    border: 1px solid #ADBFDF;
+    background: #D8E4FB;
+  }
+
+  &_bad {
+    border: 1px solid #EA1A4F;
+    background: #FEE9EF;
+  }
+
+  &__text {
+    font-size: $m-font-size;
+    line-height: $xs-line-height;
+  }
+}
+
+.duration {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;;
+}
+
+audio {
+  /*border-radius: 90px;*/
+  width: 250px;
+  height: 45px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: $ui-background-player;
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: $white;
+  border-radius: 50%;
+  color: $ui-accent;
+}
+
+.time {
+  padding-right: 18px;
+  text-align: end;
+  opacity: 1;
+  visibility: visible;
+}

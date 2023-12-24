@@ -13,16 +13,3 @@ export interface IOptions {
   value: string;
   icon?: string;
 }
-
-/**
- * Типизация данных шапки таблицы
- */
-
-export interface refCols {
-  key: string;
-  label: string;
-  style: {
-    width: string;
-  };
-  cellComponent: (data: string) => JSX.Element;
-}

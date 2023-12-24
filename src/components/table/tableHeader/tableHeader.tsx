@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import style from './tableHeader.module.scss';
-import { refCols } from '../../../utils/types/common';
+import { IRefColumns } from '../../../utils/types/table';
 
 interface ITableHeader {
-  columns: Array<refCols>;
+  columns: Array<IRefColumns>;
 }
 
 /**
  * Компонент - TableHeader.
  * Отрисовывает Header таблицы.
- * @param columns - принимает на вход названия колонок
+ * @param columns - принимает на вход данные ячеек шапки таблицы
  * @example
  * <TableHeader columns={refColumns} />
  */
@@ -18,7 +18,7 @@ const TableHeader: FC<ITableHeader> = ({ columns }) => {
   console.log(columns);
 
   return (
-    <thead className={style.header__wrapper}>
+    <thead>
       <tr>
         {columns.map((column) => (
           <th key={column.key} className={style.cell} style={column.style}>
