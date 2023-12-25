@@ -4,7 +4,7 @@ import { FC } from 'react';
 import cn from 'classnames';
 import style from './durationCell.module.scss';
 import { IResults } from '../../../../../utils/types/table';
-import Typography from '../../../typography/Typography';
+import Typography from '../../../typography/typography';
 // import { getRecord } from '../../../../../api/api';
 
 /**
@@ -12,7 +12,7 @@ import Typography from '../../../typography/Typography';
  * Отрисовывает плеер и показывает длительность разговора
  * @param data - Принимает данные с сервера
  */
-const DurationCell: FC<IResults> = (data) => {
+const DurationCell: FC<IResults> = (data): JSX.Element => {
   // const [record, setRecord] = useState('');
   const currentTime = data?.time;
   const minutes = Math.floor(currentTime / 60);

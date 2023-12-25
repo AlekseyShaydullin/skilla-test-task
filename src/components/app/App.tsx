@@ -3,7 +3,7 @@ import routesUrl from '../../utils/routes/routesUrl';
 import Calls from '../../pages/calls/calls';
 import NotFound from '../../pages/not-found';
 
-function App() {
+function App(): JSX.Element {
   return (
     <Routes>
       <Route path={routesUrl.callsPage} element={<Calls />}></Route>

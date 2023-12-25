@@ -7,7 +7,7 @@ import Icon from '../../../icon/icon';
  * Компонент ячейки для Аватарок
  * @param data - Принимает данные с сервера
  */
-const AvatarCell: FC<IResults> = (data) => {
+const AvatarCell: FC<IResults> = (data): JSX.Element => {
   return (
     <>
       {data?.person_avatar !== '' ? (

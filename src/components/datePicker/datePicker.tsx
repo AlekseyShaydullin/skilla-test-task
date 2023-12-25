@@ -18,7 +18,7 @@ interface IDatePicker {
   getInterval: Dispatch<SetStateAction<string>>;
 }
 
-const DatePicker: FC<IDatePicker> = ({ getInterval }) => {
+const DatePicker: FC<IDatePicker> = ({ getInterval }): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [choiceDate, setChoiceDate] = useState<string>('threeDays');
   const [filter, setFilter] = useState<boolean>(false);

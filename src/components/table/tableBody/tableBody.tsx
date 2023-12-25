@@ -7,7 +7,7 @@ interface ITableBody {
   rows: Array<IConfigRows>;
 }
 
-const TableBody: FC<ITableBody> = ({ data, rows }) => {
+const TableBody: FC<ITableBody> = ({ data, rows }): JSX.Element => {
   // const [isHovering, setHovering] = useState(false);
   // const refRow = useRef<HTMLTableRowElement>(null);
 

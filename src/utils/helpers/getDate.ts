@@ -51,7 +51,7 @@ export const getStartDate = (interval: string) => {
       monthAgo.setMonth(startDate.getMonth() - 1);
       return monthAgo.toISOString().split('T')[0];
     case 'year':
-      yearLater.setFullYear(startDate.getFullYear() + 1);
+      yearLater.setFullYear(startDate.getFullYear());
       return yearLater.toISOString().split('T')[0];
     default:
       return startDate.toISOString().split('T')[0];

@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import cn from 'classnames';
-import Typography from '../../typography/Typography';
 import style from './buttonIconText.module.scss';
 import Icon from '../../icon/icon';
+import Typography from '../../typography/typography';
 
 interface IButtonIconText {
   /**
@@ -69,7 +69,7 @@ const ButtonIconText = forwardRef<Ref, IButtonIconText>(
       onClick,
     },
     ref
-  ) => {
+  ): JSX.Element => {
     return (
       <button
         className={cn(style[`button`], buttonClass)}

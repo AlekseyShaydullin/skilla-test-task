@@ -8,7 +8,7 @@ import Icon from '../../../icon/icon';
  * Показывает тип звонка 'Входящие' || 'Исходящие' || 'Пропущенный' || 'Недозвон'
  * @param data - Принимает данные с сервера
  */
-export const IconTypeCallCell = (data: IResults) => (
+export const IconTypeCallCell = (data: IResults): JSX.Element => (
   <Icon
     name={data?.in_out === 1 ? 'call-incoming' : 'call-outgoing'}
     isColored

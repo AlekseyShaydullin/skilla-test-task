@@ -31,7 +31,7 @@ const Typography: FC<IProps> = ({
   children,
   className,
   fontFamily = 'primary',
-}) => {
+}): JSX.Element => {
   const Tag = tag;
 
   return (

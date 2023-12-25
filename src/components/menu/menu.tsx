@@ -57,7 +57,7 @@ const Menu = forwardRef<Ref, IMenu>(
       checkOption,
     },
     ref
-  ) => {
+  ): JSX.Element => {
     let containerCN = cn(style.box, layoutClassName);
 
     if (isScroll) {

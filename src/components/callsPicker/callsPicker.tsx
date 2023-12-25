@@ -1,11 +1,15 @@
-import { FC, useRef, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useRef, useState } from 'react';
 import style from './callsPicker.module.scss';
 import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
 import Menu from '../menu/menu';
 import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
 import { IOptions } from '../../utils/types/common';
 
-const CallsPicker: FC = () => {
+interface ICallsPicker {
+  getFilter: Dispatch<SetStateAction<string>>;
+}
+
+const CallsPicker: FC<ICallsPicker> = ({ getFilter }): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [callTypes, setCallTypes] = useState<string>('allTypes');
   const [filter, setFilter] = useState<boolean>(false);
@@ -26,6 +30,7 @@ const CallsPicker: FC = () => {
   const toggleDropFilters = () => {
     setFilter(!filter);
     setCallTypes('allTypes');
+    getFilter('allTypes');
   };
 
   const handleOptionClick = (e: string, options: Array<IOptions>) => {
@@ -33,6 +38,7 @@ const CallsPicker: FC = () => {
 
     setShowDropDown(false);
     setCallTypes(optionClick!.value);
+    getFilter(optionClick!.value);
     setFilter(true);
   };
 

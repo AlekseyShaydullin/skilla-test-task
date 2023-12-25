@@ -26,7 +26,7 @@ export interface IIcon {
  * />
  **/
 
-const Icon: FC<IIcon> = ({ name, extraClass, isColored }) => {
+const Icon: FC<IIcon> = ({ name, extraClass, isColored }): JSX.Element => {
   const filterId = useId();
   const { SvgIcon } = useSvgImport(name);
 

@@ -18,16 +18,18 @@ type TRequest = <T>(
   url: string,
   paramUriFirst: string,
   paramUriSecond: string,
-  options: RequestInit
+  options: RequestInit,
+  paramUriThird?: string
 ) => Promise<T>;
 
 const request: TRequest = async <T>(
   uri: string,
   paramUriFirst: string,
   paramUriSecond: string,
-  options: RequestInit
+  options: RequestInit,
+  paramUriThird?: string
 ) => {
-  const path = `${apiUri}/${uri}?${paramUriFirst}${paramUriSecond}`;
+  const path = `${apiUri}/${uri}?${paramUriFirst}${paramUriSecond}${paramUriThird}`;
   const res = await fetch(path, options);
   const result: Promise<T> = checkRes(res);
   return result;
@@ -36,26 +38,61 @@ const request: TRequest = async <T>(
 export async function getCalls(paramsUri: IParams): Promise<IData> {
   const paramUriFirst = `date_start=${paramsUri.param_one}`;
   const paramUriSecond = `&date_end=${paramsUri.param_two}`;
+  const paramUriThird = `${paramsUri.param_third}`;
 
-  return await request('getList', paramUriFirst, paramUriSecond, {
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer testtoken',
+  return await request(
+    'getList',
+    paramUriFirst,
+    paramUriSecond,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer testtoken',
+        'Content-type': 'application/json',
+      },
     },
-  });
+    paramUriThird
+  );
 }
 
 export async function getRecord(paramsUri: IParams): Promise<Blob> {
   const paramUriFirst = `record=${paramsUri.param_one}`;
   const paramUriSecond = `&partnership_id=${paramsUri.param_two}`;
+  const paramUriThird = `${paramsUri.param_third}`;
 
-  return await request('getRecord', paramUriFirst, paramUriSecond, {
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer testtoken',
-      'Content-type': 'audio/mpeg, audio/x-mpeg, audio/x-mpeg-3, audio/mpeg3',
-      'Content-Transfer-Encoding': 'binary',
-      'Content-Disposition': 'filename=record.mp3',
+  return await request(
+    'getRecord',
+    paramUriFirst,
+    paramUriSecond,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer testtoken',
+        'Content-type': 'audio/mpeg, audio/x-mpeg, audio/x-mpeg-3, audio/mpeg3',
+        'Content-Transfer-Encoding': 'binary',
+        'Content-Disposition': 'filename=record.mp3',
+      },
     },
-  });
+    paramUriThird
+  );
+}
+
+export async function getFilterCalls(paramsUri: IParams): Promise<IData> {
+  const paramUriFirst = `date_start=${paramsUri.param_one}`;
+  const paramUriSecond = `&date_end=${paramsUri.param_two}`;
+  const paramUriThird = `&in_out=${paramsUri.param_third}`;
+
+  return await request(
+    'getList',
+    paramUriFirst,
+    paramUriSecond,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer testtoken',
+        'Content-type': 'application/json',
+      },
+    },
+    paramUriThird
+  );
 }

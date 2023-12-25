@@ -5,12 +5,13 @@ import CallsPicker from '../callsPicker/callsPicker';
 
 interface IHeader {
   getInterval: Dispatch<SetStateAction<string>>;
+  getFilter: Dispatch<SetStateAction<string>>;
 }
 
-const Header: FC<IHeader> = ({ getInterval }) => {
+const Header: FC<IHeader> = ({ getInterval, getFilter }): JSX.Element => {
   return (
     <header className={style.header__wrapper}>
-      <CallsPicker />
+      <CallsPicker getFilter={getFilter} />
       <DatePicker getInterval={getInterval} />
     </header>
   );

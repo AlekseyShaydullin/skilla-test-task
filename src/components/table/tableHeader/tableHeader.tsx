@@ -14,7 +14,7 @@ interface ITableHeader {
  * <TableHeader columns={refColumns} />
  */
 
-const TableHeader: FC<ITableHeader> = ({ columns }) => {
+const TableHeader: FC<ITableHeader> = ({ columns }): JSX.Element => {
   return (
     <thead>
       <tr>

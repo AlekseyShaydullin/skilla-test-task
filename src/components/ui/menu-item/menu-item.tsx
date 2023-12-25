@@ -24,7 +24,7 @@ const MenuItem: FC<IMenuItem> = ({
   onClick,
   extraClass = '',
   checkOption,
-}) => {
+}): JSX.Element => {
   return (
     <div
       key={option.value}

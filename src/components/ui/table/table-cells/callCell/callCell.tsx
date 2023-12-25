@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import style from './callCell.module.scss';
 import { IResults } from '../../../../../utils/types/table';
-import Typography from '../../../typography/Typography';
+import Typography from '../../../typography/typography';
 import { fixPhoneNumber } from '../../../../../utils/helpers/fixPhoneNumber';
 
 /**
  * Компонент ячейки для колонки Звонок
  * @param data - Принимает данные с сервера
  */
-const CallCell: FC<IResults> = (data) => {
+const CallCell: FC<IResults> = (data): JSX.Element => {
   return (
     <>
       {data?.contact_name && (

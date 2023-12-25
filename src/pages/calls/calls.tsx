@@ -6,11 +6,12 @@ import Table from '../../components/table/table/table';
 
 const Calls: FC = (): JSX.Element => {
   const [interval, setInterval] = useState<string>('threeDays');
+  const [filter, setFilter] = useState<string>('allTypes');
 
   return (
     <main className={style.calls__wrapper}>
-      <Header getInterval={setInterval} />
-      <Table interval={interval} />
+      <Header getInterval={setInterval} getFilter={setFilter} />
+      <Table interval={interval} filter={filter} />
     </main>
   );
 };

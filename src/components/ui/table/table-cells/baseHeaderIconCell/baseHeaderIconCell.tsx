@@ -1,12 +1,12 @@
 import style from './baseHeaderIconCell.module.scss';
 import Icon from '../../../icon/icon';
-import Typography from '../../../typography/Typography';
+import Typography from '../../../typography/typography';
 
 /**
  * Компонент ячейки Шапки таблицы с Иконкой Chevron
  * @param data - Принимает название колонки таблицы
  */
-export const BaseHeaderIconCell = (data: string) => (
+export const BaseHeaderIconCell = (data: string): JSX.Element => (
   <div
     className={
       data !== 'Длительность'

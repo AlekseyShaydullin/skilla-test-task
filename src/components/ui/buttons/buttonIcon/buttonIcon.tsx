@@ -23,7 +23,11 @@ interface IButtonIcon {
  * <ButtonIcon icon="chevron" isColored={true} extraClass={style.icon} />
  */
 
-const ButtonIcon: FC<IButtonIcon> = ({ icon, extraClass, isColored }) => {
+const ButtonIcon: FC<IButtonIcon> = ({
+  icon,
+  extraClass,
+  isColored,
+}): JSX.Element => {
   return (
     <button className={style.button}>
       <Icon name={icon} extraClass={extraClass} isColored={isColored} />

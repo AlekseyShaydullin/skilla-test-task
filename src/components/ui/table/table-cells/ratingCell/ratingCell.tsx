@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import style from './ratingCell.module.scss';
 import { getRandom } from '../../../../../utils/helpers/getRandom';
-import Typography from '../../../typography/Typography';
+import Typography from '../../../typography/typography';
 
 /**
  * Компонент ячейки для колонки Оценка
@@ -10,12 +10,16 @@ import Typography from '../../../typography/Typography';
  * Так как в ТЗ не были данны кретеерии фильтрации. Отрисовываю рандомно
  * @param data - Принимает данные с сервера
  */
-const RatingCell = () => {
+const RatingCell = (): JSX.Element => {
   const randomInt = getRandom(0, 4);
 
   switch (randomInt) {
     case 0:
-      return null;
+      return (
+        <Typography tag="span" className={style.red}>
+          {''}
+        </Typography>
+      );
     case 1:
       return (
         <div className={cn(style.grade, style.grade_grate)}>
@@ -50,7 +54,11 @@ const RatingCell = () => {
         </Typography>
       );
     default:
-      return null;
+      return (
+        <Typography tag="span" className={style.red}>
+          {'Скрипт не использован'}
+        </Typography>
+      );
   }
 };
 
