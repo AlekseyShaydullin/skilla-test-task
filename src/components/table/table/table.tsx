@@ -17,8 +17,10 @@ const Table: FC<ITable> = ({ interval }) => {
   const dateStart = getStartDate(interval);
   const dateEnd = getEndDate(interval);
 
+  console.log(dateStart);
+  console.log(dateEnd);
+
   useEffect(() => {
-    //dateStart - Сегодня dateEnd - (3 дня, 7 дней, месяц, год)
     getCalls({ param_one: dateStart, param_two: dateEnd })
       .then((res) => setData(res.results))
       .catch((err) => console.error(err));

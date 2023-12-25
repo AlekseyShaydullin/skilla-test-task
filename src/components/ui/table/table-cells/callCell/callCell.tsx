@@ -21,9 +21,11 @@ const CallCell: FC<IResults> = (data) => {
           </Typography>
         </div>
       )}
-      <Typography tag="p" className={style.primary}>
-        {fixPhoneNumber(data?.from_number)}
-      </Typography>
+      {data?.contact_name === '' && (
+        <Typography tag="p" className={style.primary}>
+          {fixPhoneNumber(data?.from_number)}
+        </Typography>
+      )}
     </>
   );
 };
