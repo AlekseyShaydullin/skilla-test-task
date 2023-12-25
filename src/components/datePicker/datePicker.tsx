@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useRef, useState } from 'react';
 import style from './datePicker.module.scss';
 import ButtonIcon from '../ui/buttons/buttonIcon/buttonIcon';
 import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
@@ -14,7 +14,11 @@ import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape
  * <DatePicker />
  */
 
-const DatePicker: FC = () => {
+interface IDatePicker {
+  getInterval: Dispatch<SetStateAction<string>>;
+}
+
+const DatePicker: FC<IDatePicker> = ({ getInterval }) => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [choiceDate, setChoiceDate] = useState<string>('threeDays');
   const [filter, setFilter] = useState<boolean>(false);
@@ -31,7 +35,6 @@ const DatePicker: FC = () => {
     { label: 'Неделя', value: 'week' },
     { label: 'Месяц', value: 'month' },
     { label: 'Год', value: 'year' },
-    { label: 'Указать даты', value: 'specifyDates' },
   ];
 
   const handleOptionClick = (e: string, options: Array<IOptions>) => {
@@ -39,6 +42,7 @@ const DatePicker: FC = () => {
 
     setShowDropDown(false);
     setChoiceDate(optionClick!.value);
+    getInterval(optionClick!.value);
     setFilter(true);
   };
 

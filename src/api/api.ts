@@ -45,7 +45,7 @@ export async function getCalls(paramsUri: IParams): Promise<IData> {
   });
 }
 
-export async function getRecord(paramsUri: IParams) {
+export async function getRecord(paramsUri: IParams): Promise<Blob> {
   const paramUriFirst = `record=${paramsUri.param_one}`;
   const paramUriSecond = `&partnership_id=${paramsUri.param_two}`;
 

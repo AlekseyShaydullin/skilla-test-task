@@ -15,8 +15,6 @@ interface ITableHeader {
  */
 
 const TableHeader: FC<ITableHeader> = ({ columns }) => {
-  console.log(columns);
-
   return (
     <thead>
       <tr>

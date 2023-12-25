@@ -5,15 +5,24 @@ import { configRows, configColumns } from './tableConfig';
 import TableBody from '../tableBody/tableBody';
 import { IResults } from '../../../utils/types/table';
 import { getCalls } from '../../../api/api';
+import { getEndDate, getStartDate } from '../../../utils/helpers/getDate';
 
-const Table: FC = () => {
+interface ITable {
+  interval: string;
+}
+
+const Table: FC<ITable> = ({ interval }) => {
   const [data, setData] = useState<Array<IResults> | null>(null);
 
+  const dateStart = getStartDate(interval);
+  const dateEnd = getEndDate(interval);
+
   useEffect(() => {
-    getCalls({ param_one: '2023-12-14', param_two: '2023-12-14' })
+    //dateStart - Сегодня dateEnd - (3 дня, 7 дней, месяц, год)
+    getCalls({ param_one: dateStart, param_two: dateEnd })
       .then((res) => setData(res.results))
       .catch((err) => console.error(err));
-  }, []);
+  }, [dateEnd, dateStart]);
 
   console.log(data);
 

@@ -5,6 +5,7 @@ import cn from 'classnames';
 import style from './durationCell.module.scss';
 import { IResults } from '../../../../../utils/types/table';
 import Typography from '../../../typography/Typography';
+// import { getRecord } from '../../../../../api/api';
 
 /**
  * Компонент ячейки для колонки Длительность
@@ -12,18 +13,47 @@ import Typography from '../../../typography/Typography';
  * @param data - Принимает данные с сервера
  */
 const DurationCell: FC<IResults> = (data) => {
+  // const [record, setRecord] = useState('');
   const currentTime = data?.time;
   const minutes = Math.floor(currentTime / 60);
   const seconds = currentTime % 60;
+
+  // useEffect(() => {
+  //   if (data.record === '') {
+  //     return;
+  //   }
+  //   getRecord({ param_one: data.record, param_two: data.partnership_id })
+  //     .then((res) => new Blob([res]))
+  //     .then((blob) => {
+  //       const objectURL = URL.createObjectURL(blob);
+  //       console.log(objectURL);
+  //       setRecord(objectURL);
+  //       URL.revokeObjectURL(objectURL);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, [data.partnership_id, data.record]);
+
+  // const download = async () => {
+  //   try {
+  //     const { res } = await getRecord({
+  //       param_one: data.record,
+  //       param_two: data.partnership_id,
+  //     });
+  //     const url = URL.createObjectURL(new Blob([res]));
+  //     setRecord(url);
+  //     URL.revokeObjectURL(url);
+  //   } catch (error) {
+  //     onError();
+  //   }
+  // };
+
+  // download();
 
   return (
     <div className={style.duration}>
       {currentTime === 0 ? null : (
         <audio controls className={style.record}>
-          <source
-            src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-            type="audio/mpeg"
-          />
+          <source src={'#'} type="audio/mpeg" />
         </audio>
       )}
       {currentTime === 0 && null}
