@@ -16,7 +16,7 @@ export const IconTypeCallCell = (data: IResults): JSX.Element => (
       style.iconCall,
       data?.in_out === 1 && data.time !== 0
         ? style.iconCall_blue
-        : data?.in_out === 0
+        : data?.in_out === 0 && data?.status !== 'Не дозвонился'
           ? style.iconCall_green
           : data?.status === 'Не дозвонился'
             ? style.iconCall_red
