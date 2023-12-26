@@ -1,13 +1,14 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import style from './tableBody.module.scss';
-import { IConfigRows, IResults } from '../../../utils/types/table';
+import { IConfigRows } from '../../../utils/types/table';
+import Context from '../../../services/Context';
 
 interface ITableBody {
-  data: Array<IResults>;
   rows: Array<IConfigRows>;
 }
 
-const TableBody: FC<ITableBody> = ({ data, rows }): JSX.Element => {
+const TableBody: FC<ITableBody> = ({ rows }): JSX.Element => {
+  const value = useContext(Context);
   // const [isHovering, setHovering] = useState(false);
   // const refRow = useRef<HTMLTableRowElement>(null);
 
@@ -35,7 +36,7 @@ const TableBody: FC<ITableBody> = ({ data, rows }): JSX.Element => {
 
   return (
     <tbody className={style.body__wrapper}>
-      {data?.map((data, index) => (
+      {value?.data?.map((data, index) => (
         <tr key={index} className={style.row}>
           {rows.map((row, index) => (
             <td key={index} className={style.cell} style={row.style}>

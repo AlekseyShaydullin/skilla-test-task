@@ -35,7 +35,8 @@ interface IButtonIconText {
    * Можно управлять стилизацией. Иконка первая? тогда пиши true
    * */
   iconFirst: boolean;
-  onClick: VoidFunction;
+  onClick?: (id: string) => void;
+  id?: string;
 }
 
 type Ref = HTMLButtonElement;
@@ -52,6 +53,8 @@ type Ref = HTMLButtonElement;
  *    iconClass={style.icon}
  *    titleClass={style.title}
  *    iconFirst={true}
+ *    onClick={onClick}
+ *    id={id}
  * />
  */
 
@@ -67,14 +70,16 @@ const ButtonIconText = forwardRef<Ref, IButtonIconText>(
       isColored,
       iconFirst,
       onClick,
+      id,
     },
     ref
   ): JSX.Element => {
     return (
       <button
         className={cn(style[`button`], buttonClass)}
-        onClick={onClick}
+        onClick={() => onClick!(id!)}
         ref={ref}
+        id={id}
       >
         {!iconFirst && (
           <Typography tag={tag} className={titleClass}>

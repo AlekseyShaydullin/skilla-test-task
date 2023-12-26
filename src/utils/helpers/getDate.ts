@@ -3,7 +3,7 @@
  * @param interval - Данные из DatePicker
  * @returns Возвращает дату в формате YYYY-MM-DD
  */
-export const getEndDate = (interval: string) => {
+export const getEndDate = (interval?: string) => {
   /** Заготовки под даты */
   const today = new Date();
   const weekAgo = new Date(today);
@@ -32,9 +32,9 @@ export const getEndDate = (interval: string) => {
  * @param interval - Данные из DatePicker
  * @returns Возвращает дату в формате YYYY-MM-DD
  */
-export const getStartDate = (interval: string) => {
+export const getStartDate = (interval?: string) => {
   /** Заготовки под даты */
-  const startDate = new Date(getEndDate(interval));
+  const startDate = new Date(getEndDate(interval!));
   const threeDaysAgo = new Date(startDate);
   const weekAgo = new Date(startDate);
   const monthAgo = new Date(startDate);

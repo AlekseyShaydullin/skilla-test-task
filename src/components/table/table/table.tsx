@@ -1,28 +1,23 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import style from './table.module.scss';
 import TableHeader from '../tableHeader/tableHeader';
 import { configRows, configColumns } from './tableConfig';
 import TableBody from '../tableBody/tableBody';
-import { IResults } from '../../../utils/types/table';
 import { getCalls, getFilterCalls } from '../../../api/api';
 import { getEndDate, getStartDate } from '../../../utils/helpers/getDate';
+import Context from '../../../services/Context';
 
-interface ITable {
-  interval: string;
-  filter: string;
-}
+const Table: FC = (): JSX.Element => {
+  const value = useContext(Context);
 
-const Table: FC<ITable> = ({ interval, filter }): JSX.Element => {
-  const [data, setData] = useState<Array<IResults> | null>(null);
-
-  const dateStart = getStartDate(interval);
-  const dateEnd = getEndDate(interval);
+  const dateStart = getStartDate(value?.interval);
+  const dateEnd = getEndDate(value?.interval);
 
   useEffect(() => {
-    switch (filter) {
+    switch (value?.filter) {
       case 'allTypes':
         getCalls({ param_one: dateStart, param_two: dateEnd, param_third: '' })
-          .then((res) => setData(res.results))
+          .then((res) => value.setData(res.results))
           .catch((err) => console.error(err));
         break;
       case 'outgoing':
@@ -31,7 +26,7 @@ const Table: FC<ITable> = ({ interval, filter }): JSX.Element => {
           param_two: dateEnd,
           param_third: 0,
         })
-          .then((res) => setData(res.results))
+          .then((res) => value.setData(res.results))
           .catch((err) => console.error(err));
         break;
       case 'incoming':
@@ -40,21 +35,22 @@ const Table: FC<ITable> = ({ interval, filter }): JSX.Element => {
           param_two: dateEnd,
           param_third: 1,
         })
-          .then((res) => setData(res.results))
+          .then((res) => value.setData(res.results))
           .catch((err) => console.error(err));
         break;
       default:
         getCalls({ param_one: dateStart, param_two: dateEnd, param_third: '' })
-          .then((res) => setData(res.results))
+          .then((res) => value?.setData(res.results))
           .catch((err) => console.error(err));
         break;
     }
-  }, [dateEnd, dateStart, filter]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateEnd, dateStart, value?.filter]);
 
   return (
     <table className={style.tableWrapper}>
       <TableHeader columns={configColumns} />
-      {data && <TableBody data={data} rows={configRows} />}
+      {<TableBody rows={configRows} />}
     </table>
   );
 };

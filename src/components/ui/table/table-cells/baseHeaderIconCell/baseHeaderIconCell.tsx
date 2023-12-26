@@ -1,60 +1,23 @@
+import { useContext, useRef } from 'react';
+
 import style from './baseHeaderIconCell.module.scss';
-import Typography from '../../../typography/typography';
-import ButtonIcon from '../../../buttons/buttonIcon/buttonIcon';
-import { useRef, useState } from 'react';
-import { sortChecked } from '../../../../../utils/types/common';
+import ButtonIconText from '../../../buttons/buttonIconText/buttonIconText';
+import Context from '../../../../../services/Context';
+import { useHandelSort } from '../../../../../utils/helpers/useHandelSort';
 
 /**
  * Компонент ячейки Шапки таблицы с Иконкой Chevron
  * @param data - Принимает название колонки таблицы
+ * @param key - Принимает ключ
  */
 const BaseHeaderIconCell = (data: string, key: string): JSX.Element => {
-  const [directionTime, setDirectionTime] = useState<sortChecked>(
-    sortChecked.Default
-  );
-  const [directionDuration, setDirectionDuration] = useState<sortChecked>(
-    sortChecked.Default
-  );
-
+  const value = useContext(Context);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const handelSort = () => {
-    if (buttonRef.current && buttonRef.current.id === 'time') {
-      switch (directionTime) {
-        case 'default':
-          setDirectionTime(sortChecked.ASC);
-          break;
-        case 'asc':
-          setDirectionTime(sortChecked.DESC);
-          break;
-        case 'desc':
-          setDirectionTime(sortChecked.ASC);
-          break;
-        default:
-          setDirectionTime(sortChecked.Default);
-          break;
-      }
-    } else {
-      switch (directionDuration) {
-        case 'default':
-          setDirectionDuration(sortChecked.ASC);
-          break;
-        case 'asc':
-          setDirectionDuration(sortChecked.DESC);
-          break;
-        case 'desc':
-          setDirectionDuration(sortChecked.ASC);
-          break;
-        default:
-          setDirectionDuration(sortChecked.Default);
-          break;
-      }
-    }
-  };
+  const { handelSort } = useHandelSort(key);
 
-  console.log(buttonRef.current && buttonRef.current.id);
-
-  console.log(directionDuration);
+  console.log(value?.directionTime);
+  console.log(value?.directionDuration);
 
   return (
     <div
@@ -64,17 +27,18 @@ const BaseHeaderIconCell = (data: string, key: string): JSX.Element => {
           : `${style.wrapper} ${style.wrapper_end}`
       }
     >
-      <Typography tag="h2" className={style.secondary}>
-        {data}
-      </Typography>
-      <ButtonIcon
+      <ButtonIconText
         icon="chevron"
+        tag="h2"
+        title={data}
         isColored
-        extraClass={style.iconChevron}
         buttonClass={style.button}
+        iconClass={style.iconChevron}
+        titleClass={style.secondary}
+        iconFirst={false}
         onClick={handelSort}
-        id={key}
         ref={buttonRef}
+        id={key}
       />
     </div>
   );

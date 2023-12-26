@@ -1,18 +1,17 @@
-import { Dispatch, FC, SetStateAction, useRef, useState } from 'react';
+import { FC, useContext, useRef, useState } from 'react';
 import style from './callsPicker.module.scss';
 import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
 import Menu from '../menu/menu';
 import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
 import { IOptions } from '../../utils/types/common';
+import Context from '../../services/Context';
 
-interface ICallsPicker {
-  getFilter: Dispatch<SetStateAction<string>>;
-}
-
-const CallsPicker: FC<ICallsPicker> = ({ getFilter }): JSX.Element => {
+const CallsPicker: FC = (): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [callTypes, setCallTypes] = useState<string>('allTypes');
   const [filter, setFilter] = useState<boolean>(false);
+
+  const value = useContext(Context);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -30,7 +29,7 @@ const CallsPicker: FC<ICallsPicker> = ({ getFilter }): JSX.Element => {
   const toggleDropFilters = () => {
     setFilter(!filter);
     setCallTypes('allTypes');
-    getFilter('allTypes');
+    value?.setFilter('allTypes');
   };
 
   const handleOptionClick = (e: string, options: Array<IOptions>) => {
@@ -38,7 +37,7 @@ const CallsPicker: FC<ICallsPicker> = ({ getFilter }): JSX.Element => {
 
     setShowDropDown(false);
     setCallTypes(optionClick!.value);
-    getFilter(optionClick!.value);
+    value?.setFilter(optionClick!.value);
     setFilter(true);
   };
 
