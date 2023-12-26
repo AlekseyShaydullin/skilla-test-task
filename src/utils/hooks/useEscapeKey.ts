@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 /**
- * хук, добавляет click EventListener на document
+ * Хук, добавляет click EventListener на document
  * @param callback функция, срабатывает при нажатии на esc
  */
 const useEscapeKey = (callback: () => void) => {

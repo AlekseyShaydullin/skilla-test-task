@@ -1,9 +1,13 @@
-import { FC } from 'react';
+import { FC, LegacyRef } from 'react';
 import cn from 'classnames';
-import Icon from '../../icon/icon';
-import style from './buttonIcon.module.scss';
+import style from './linkIcon.module.scss';
+import Icon from '../icon/icon';
 
 interface IButtonIcon {
+  /**
+   * Укажите uri
+   */
+  href: string;
   /**
    * Укажите название файла иконки, без его расширения
    */
@@ -19,34 +23,44 @@ interface IButtonIcon {
   /**
    * Cтилизация кнопки
    * */
-  buttonClass?: string;
+  linkClass?: string;
   onClick?: () => void;
+  ref?: LegacyRef<HTMLAnchorElement>;
 }
 
 /**
- * Компонент-обёртка для кнопок с иконками без текста
+ * Компонент-обёртка для ссылки с иконкой без текста
  * @example
- * <ButtonIcon
+ * <LinkIcon
+ *    href='https://skilla.ru/'
  *    icon="chevron"
  *    isColored={true}
  *    extraClass={style.icon}
- *    buttonClass={style.button}
+ *    linkClass={style.link}
  *    onClick={onClick}
  * />
  */
 
-const ButtonIcon: FC<IButtonIcon> = ({
+const LinkIcon: FC<IButtonIcon> = ({
+  href = '',
   icon,
   extraClass,
   isColored,
-  buttonClass = '',
+  linkClass = '',
   onClick,
+  ref,
 }): JSX.Element => {
   return (
-    <button className={cn(style.button, buttonClass)} onClick={onClick}>
+    <a
+      href={href}
+      className={cn(style.link, linkClass)}
+      onClick={onClick}
+      ref={ref}
+      target="_blank"
+    >
       <Icon name={icon} extraClass={extraClass} isColored={isColored} />
-    </button>
+    </a>
   );
 };
 
-export default ButtonIcon;
+export default LinkIcon;

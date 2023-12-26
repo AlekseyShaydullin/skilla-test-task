@@ -14,6 +14,19 @@ export function checkRes<T>(res: IResponse<T>): Promise<T> | Promise<never> {
   return Promise.reject([`Ошибка ${res.status}`, res.json()]);
 }
 
+/**
+ * @template T
+ * @param {IResponse<T>} res объект с полученным от сервера ответом. Должен иметь метод .json()
+ * @returns {Promise<Blob>} промис с парсированным response или Promise.reject([`Ошибка ${res.status}`, res.json()])
+ */
+export function checkResBlob<T>(res: IResponse<T>): Promise<Blob> {
+  if (res.ok) {
+    const blob = res.blob();
+    return blob;
+  }
+  return Promise.reject([`Ошибка ${res.status}`, res.json()]);
+}
+
 type TRequest = <T>(
   url: string,
   paramUriFirst: string,
@@ -28,12 +41,25 @@ const request: TRequest = async <T>(
   paramUriSecond: string,
   options: RequestInit,
   paramUriThird?: string
-) => {
+): Promise<T> => {
   const path = `${apiUri}/${uri}?${paramUriFirst}${paramUriSecond}${paramUriThird}`;
   const res = await fetch(path, options);
   const result: Promise<T> = checkRes(res);
   return result;
 };
+
+async function requestBlob(
+  uri: string,
+  paramUriFirst: string,
+  paramUriSecond: string,
+  options: RequestInit,
+  paramUriThird?: string
+): Promise<Blob> {
+  const path = `${apiUri}/${uri}?${paramUriFirst}${paramUriSecond}${paramUriThird}`;
+  const res = await fetch(path, options);
+  const result: Promise<Blob> = checkResBlob(res);
+  return result;
+}
 
 export async function getCalls(paramsUri: IParams): Promise<IData> {
   const paramUriFirst = `date_start=${paramsUri.param_one}`;
@@ -60,7 +86,7 @@ export async function getRecord(paramsUri: IParams): Promise<Blob> {
   const paramUriSecond = `&partnership_id=${paramsUri.param_two}`;
   const paramUriThird = `${paramsUri.param_third}`;
 
-  return await request(
+  return await requestBlob(
     'getRecord',
     paramUriFirst,
     paramUriSecond,

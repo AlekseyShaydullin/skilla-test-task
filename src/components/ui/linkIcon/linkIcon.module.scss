@@ -1,0 +1,6 @@
+@use '../../../stylesheets/variables.scss' as *;
+@use '../../../stylesheets/mixins' as *;
+
+.link {
+  @include flex(row, space-between, center, 4px);
+}

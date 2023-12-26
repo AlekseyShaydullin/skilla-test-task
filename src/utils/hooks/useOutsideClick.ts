@@ -13,7 +13,7 @@ export interface IProps {
 }
 
 /**
- * хук для перехвата кликов за пределами элемента
+ * Хук для перехвата кликов за пределами элемента
  * @param elemRef `React.RefObject`
  * @param element элемент, на который вешается слушатель клика
  * @param callback функция, по `element`
