@@ -19,14 +19,11 @@ const Player: FC<IPlayer> = ({ data, index, duration }): JSX.Element => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioSrc = useGetAudioSrc(data, isLoading);
 
-  console.log(audioSrc);
-
   const togglePlay = (index: string) => {
     setIsLoading(true);
 
     if (isLoading) {
       if (isPlaying && selectedRecordIndex === index && audioRef.current) {
-        console.log(audioRef.current);
         audioRef.current.pause();
         setIsPlaying(false);
       } else {

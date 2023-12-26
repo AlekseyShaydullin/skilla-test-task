@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { forwardRef } from 'react';
 import cn from 'classnames';
 import Icon from '../../icon/icon';
 import style from './buttonIcon.module.scss';
@@ -21,7 +21,10 @@ interface IButtonIcon {
    * */
   buttonClass?: string;
   onClick?: () => void;
+  id?: string;
 }
+
+type Ref = HTMLButtonElement;
 
 /**
  * Компонент-обёртка для кнопок с иконками без текста
@@ -34,19 +37,22 @@ interface IButtonIcon {
  *    onClick={onClick}
  * />
  */
-
-const ButtonIcon: FC<IButtonIcon> = ({
-  icon,
-  extraClass,
-  isColored,
-  buttonClass = '',
-  onClick,
-}): JSX.Element => {
-  return (
-    <button className={cn(style.button, buttonClass)} onClick={onClick}>
-      <Icon name={icon} extraClass={extraClass} isColored={isColored} />
-    </button>
-  );
-};
+const ButtonIcon = forwardRef<Ref, IButtonIcon>(
+  (
+    { icon, extraClass, isColored, buttonClass = '', onClick, id },
+    ref
+  ): JSX.Element => {
+    return (
+      <button
+        className={cn(style.button, buttonClass)}
+        onClick={onClick}
+        ref={ref}
+        id={id}
+      >
+        <Icon name={icon} extraClass={extraClass} isColored={isColored} />
+      </button>
+    );
+  }
+);
 
 export default ButtonIcon;

@@ -13,3 +13,9 @@ export interface IOptions {
   value: string;
   icon?: string;
 }
+
+export enum sortChecked {
+  Default = 'default',
+  ASC = 'asc',
+  DESC = 'desc',
+}

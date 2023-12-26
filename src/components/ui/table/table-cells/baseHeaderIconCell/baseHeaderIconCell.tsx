@@ -1,30 +1,83 @@
 import style from './baseHeaderIconCell.module.scss';
-import Icon from '../../../icon/icon';
 import Typography from '../../../typography/typography';
 import ButtonIcon from '../../../buttons/buttonIcon/buttonIcon';
+import { useRef, useState } from 'react';
+import { sortChecked } from '../../../../../utils/types/common';
 
 /**
  * Компонент ячейки Шапки таблицы с Иконкой Chevron
  * @param data - Принимает название колонки таблицы
  */
-export const BaseHeaderIconCell = (data: string): JSX.Element => (
-  <div
-    className={
-      data !== 'Длительность'
-        ? style.wrapper
-        : `${style.wrapper} ${style.wrapper_end}`
+const BaseHeaderIconCell = (data: string, key: string): JSX.Element => {
+  const [directionTime, setDirectionTime] = useState<sortChecked>(
+    sortChecked.Default
+  );
+  const [directionDuration, setDirectionDuration] = useState<sortChecked>(
+    sortChecked.Default
+  );
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handelSort = () => {
+    if (buttonRef.current && buttonRef.current.id === 'time') {
+      switch (directionTime) {
+        case 'default':
+          setDirectionTime(sortChecked.ASC);
+          break;
+        case 'asc':
+          setDirectionTime(sortChecked.DESC);
+          break;
+        case 'desc':
+          setDirectionTime(sortChecked.ASC);
+          break;
+        default:
+          setDirectionTime(sortChecked.Default);
+          break;
+      }
+    } else {
+      switch (directionDuration) {
+        case 'default':
+          setDirectionDuration(sortChecked.ASC);
+          break;
+        case 'asc':
+          setDirectionDuration(sortChecked.DESC);
+          break;
+        case 'desc':
+          setDirectionDuration(sortChecked.ASC);
+          break;
+        default:
+          setDirectionDuration(sortChecked.Default);
+          break;
+      }
     }
-  >
-    <Typography tag="h2" className={style.secondary}>
-      {data}
-    </Typography>
-    <ButtonIcon
-      icon="chevron"
-      isColored={true}
-      extraClass={style.icon}
-      buttonClass={style.button}
-      // onClick={onClick}
-    />
-    <Icon name="chevron" isColored extraClass={style.iconChevron} />
-  </div>
-);
+  };
+
+  console.log(buttonRef.current && buttonRef.current.id);
+
+  console.log(directionDuration);
+
+  return (
+    <div
+      className={
+        data !== 'Длительность'
+          ? style.wrapper
+          : `${style.wrapper} ${style.wrapper_end}`
+      }
+    >
+      <Typography tag="h2" className={style.secondary}>
+        {data}
+      </Typography>
+      <ButtonIcon
+        icon="chevron"
+        isColored
+        extraClass={style.iconChevron}
+        buttonClass={style.button}
+        onClick={handelSort}
+        id={key}
+        ref={buttonRef}
+      />
+    </div>
+  );
+};
+
+export default BaseHeaderIconCell;

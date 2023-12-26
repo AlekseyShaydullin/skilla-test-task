@@ -53,7 +53,6 @@ const CallsPicker: FC<ICallsPicker> = ({ getFilter }): JSX.Element => {
     buttonRef
   );
 
-  console.log(callTypes);
   return (
     <section className={style.filters}>
       <ButtonIconText

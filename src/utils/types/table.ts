@@ -11,7 +11,7 @@ export interface IRefColumns {
     width: string;
     justifyContent?: string;
   };
-  cellComponent: (data: string) => ReactNode;
+  cellComponent: (data: string, key: string) => ReactNode;
 }
 
 export interface IResults {

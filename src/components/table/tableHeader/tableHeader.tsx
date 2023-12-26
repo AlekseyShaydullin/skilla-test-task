@@ -20,7 +20,7 @@ const TableHeader: FC<ITableHeader> = ({ columns }): JSX.Element => {
       <tr>
         {columns.map((column) => (
           <th key={column.key} className={style.cell} style={column.style}>
-            {column.cellComponent(column.label)}
+            {column.cellComponent(column.label, column.key)}
           </th>
         ))}
       </tr>
