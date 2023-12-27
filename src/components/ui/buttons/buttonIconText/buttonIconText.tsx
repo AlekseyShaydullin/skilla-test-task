@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import cn from 'classnames';
+
 import style from './buttonIconText.module.scss';
 import Icon from '../../icon/icon';
 import Typography from '../../typography/typography';

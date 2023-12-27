@@ -1,9 +1,9 @@
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 
 import style from './baseHeaderIconCell.module.scss';
 import ButtonIconText from '../../../buttons/buttonIconText/buttonIconText';
 import Context from '../../../../../services/Context';
-import { useHandelSort } from '../../../../../utils/helpers/useHandelSort';
+import { getHandelSort } from '../../../../../utils/helpers/getHandelSort';
 
 /**
  * Компонент ячейки Шапки таблицы с Иконкой Chevron
@@ -12,12 +12,10 @@ import { useHandelSort } from '../../../../../utils/helpers/useHandelSort';
  */
 const BaseHeaderIconCell = (data: string, key: string): JSX.Element => {
   const value = useContext(Context);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const handelSort = getHandelSort(key, value);
 
-  const { handelSort } = useHandelSort(key);
-
-  console.log(value?.directionTime);
-  console.log(value?.directionDuration);
+  // console.log(value?.directionTime);
+  // console.log(value?.directionDuration);
 
   return (
     <div
@@ -37,7 +35,6 @@ const BaseHeaderIconCell = (data: string, key: string): JSX.Element => {
         titleClass={style.secondary}
         iconFirst={false}
         onClick={handelSort}
-        ref={buttonRef}
         id={key}
       />
     </div>

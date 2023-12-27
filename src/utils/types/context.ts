@@ -3,8 +3,7 @@ import { sortChecked } from './common';
 import { IResults } from './table';
 
 export interface IContext {
-  data: Array<IResults> | null;
-  setData: Dispatch<SetStateAction<Array<IResults> | null>>;
+  sortedData: Array<IResults> | null | undefined;
   interval: string;
   setInterval: Dispatch<SetStateAction<string>>;
   filter: string;

@@ -5,12 +5,16 @@ import Header from '../../components/header/header';
 import Table from '../../components/table/table/table';
 import Context from '../../services/Context';
 import { sortChecked } from '../../utils/types/common';
-import { IResults } from '../../utils/types/table';
+import { useGetData } from '../../utils/hooks/useGetData';
+import { useGetSort } from '../../utils/hooks/useGetSort';
 
 const Calls: FC = (): JSX.Element => {
-  const [data, setData] = useState<Array<IResults> | null>(null);
-  const [interval, setInterval] = useState<string>('threeDays');
+  //Состояния Header
   const [filter, setFilter] = useState<string>('allTypes');
+  const [interval, setInterval] = useState<string>('threeDays');
+
+  //Состояния Table
+  const data = useGetData(interval, filter);
   const [directionTime, setDirectionTime] = useState<sortChecked>(
     sortChecked.Default
   );
@@ -18,14 +22,11 @@ const Calls: FC = (): JSX.Element => {
     sortChecked.Default
   );
 
-  console.log(directionTime);
-  console.log(directionDuration);
+  const sortedData = useGetSort(data, directionTime, directionDuration);
 
   return (
     <Context.Provider
       value={{
-        data,
-        setData,
         interval,
         setInterval,
         filter,
@@ -34,6 +35,7 @@ const Calls: FC = (): JSX.Element => {
         setDirectionTime,
         directionDuration,
         setDirectionDuration,
+        sortedData,
       }}
     >
       <main className={style.calls__wrapper}>

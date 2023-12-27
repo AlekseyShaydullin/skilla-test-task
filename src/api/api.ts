@@ -52,10 +52,9 @@ async function requestBlob(
   uri: string,
   paramUriFirst: string,
   paramUriSecond: string,
-  options: RequestInit,
-  paramUriThird?: string
+  options: RequestInit
 ): Promise<Blob> {
-  const path = `${apiUri}/${uri}?${paramUriFirst}${paramUriSecond}${paramUriThird}`;
+  const path = `${apiUri}/${uri}?${paramUriFirst}${paramUriSecond}`;
   const res = await fetch(path, options);
   const result: Promise<Blob> = checkResBlob(res);
   return result;
@@ -84,23 +83,16 @@ export async function getCalls(paramsUri: IParams): Promise<IData> {
 export async function getRecord(paramsUri: IParams): Promise<Blob> {
   const paramUriFirst = `record=${paramsUri.param_one}`;
   const paramUriSecond = `&partnership_id=${paramsUri.param_two}`;
-  const paramUriThird = `${paramsUri.param_third}`;
 
-  return await requestBlob(
-    'getRecord',
-    paramUriFirst,
-    paramUriSecond,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer testtoken',
-        'Content-type': 'audio/mpeg, audio/x-mpeg, audio/x-mpeg-3, audio/mpeg3',
-        'Content-Transfer-Encoding': 'binary',
-        'Content-Disposition': 'filename=record.mp3',
-      },
+  return await requestBlob('getRecord', paramUriFirst, paramUriSecond, {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer testtoken',
+      'Content-type': 'audio/mpeg, audio/x-mpeg, audio/x-mpeg-3, audio/mpeg3',
+      'Content-Transfer-Encoding': 'binary',
+      'Content-Disposition': 'filename=record.mp3',
     },
-    paramUriThird
-  );
+  });
 }
 
 export async function getFilterCalls(paramsUri: IParams): Promise<IData> {

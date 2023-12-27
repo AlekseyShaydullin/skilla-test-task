@@ -36,7 +36,7 @@ const TableBody: FC<ITableBody> = ({ rows }): JSX.Element => {
 
   return (
     <tbody className={style.body__wrapper}>
-      {value?.data?.map((data, index) => (
+      {value?.sortedData?.map((data, index) => (
         <tr key={index} className={style.row}>
           {rows.map((row, index) => (
             <td key={index} className={style.cell} style={row.style}>
