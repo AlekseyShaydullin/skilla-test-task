@@ -57,7 +57,7 @@ export const configColumns = [
 ];
 
 /**
- * Конфигурации шапки таблицы
+ * Конфигурация таблицы
  */
 export const configRows = [
   {

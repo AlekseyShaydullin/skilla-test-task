@@ -1,4 +1,4 @@
-import { FC, useId } from 'react';
+import { FC, memo, useId } from 'react';
 import { useSvgImport } from '../../../utils/hooks/useSvgImport';
 
 export interface IIcon {
@@ -26,7 +26,7 @@ export interface IIcon {
  * />
  **/
 
-const Icon: FC<IIcon> = ({ name, extraClass, isColored }): JSX.Element => {
+const Icon: FC<IIcon> = memo(({ name, extraClass, isColored }): JSX.Element => {
   const filterId = useId();
   const { SvgIcon } = useSvgImport(name);
 
@@ -51,6 +51,6 @@ const Icon: FC<IIcon> = ({ name, extraClass, isColored }): JSX.Element => {
       )}
     </svg>
   );
-};
+});
 
 export default Icon;

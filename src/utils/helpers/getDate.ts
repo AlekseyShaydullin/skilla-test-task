@@ -13,7 +13,7 @@ export const getEndDate = () => {
  * @param interval - Данные из DatePicker
  * @returns Возвращает дату в формате YYYY-MM-DD
  */
-export const getStartDate = (interval: string) => {
+export const getStartDate = (interval: string | undefined) => {
   /** Заготовки под даты */
   const startDate = new Date(getEndDate());
   const threeDaysAgo = new Date(startDate);

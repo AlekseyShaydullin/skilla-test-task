@@ -43,6 +43,8 @@ const request: TRequest = async <T>(
   paramUriThird?: string
 ): Promise<T> => {
   const path = `${apiUri}/${uri}?${paramUriFirst}${paramUriSecond}${paramUriThird}`;
+  console.log(path);
+
   const res = await fetch(path, options);
   const result: Promise<T> = checkRes(res);
   return result;

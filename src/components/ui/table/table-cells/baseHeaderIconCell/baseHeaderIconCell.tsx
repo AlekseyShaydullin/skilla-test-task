@@ -14,9 +14,6 @@ const BaseHeaderIconCell = (data: string, key: string): JSX.Element => {
   const value = useContext(Context);
   const handelSort = getHandelSort(key, value);
 
-  // console.log(value?.directionTime);
-  // console.log(value?.directionDuration);
-
   return (
     <div
       className={

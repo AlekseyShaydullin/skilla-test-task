@@ -3,11 +3,6 @@ import { IContext } from '../types/context';
 
 export const getHandelSort = (id: string, value: IContext | null) => {
   const handelSort = () => {
-    console.log(id);
-    console.log(value?.directionTime);
-    console.log(value?.directionDuration);
-    console.log('====');
-
     if (id === 'time' && value) {
       switch (value.directionTime) {
         case 'default':

@@ -3,11 +3,12 @@ import { sortChecked } from './common';
 import { IResults } from './table';
 
 export interface IContext {
-  sortedData: Array<IResults> | null | undefined;
+  data: Array<IResults> | null;
+  setData: Dispatch<SetStateAction<IResults[] | null>>;
   interval: string;
   setInterval: Dispatch<SetStateAction<string>>;
-  filter: string;
-  setFilter: Dispatch<SetStateAction<string>>;
+  callTypes: string;
+  setCallTypes: Dispatch<SetStateAction<string>>;
   directionTime: sortChecked;
   setDirectionTime: Dispatch<SetStateAction<sortChecked>>;
   directionDuration: sortChecked;

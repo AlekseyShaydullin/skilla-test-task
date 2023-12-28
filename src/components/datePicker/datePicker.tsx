@@ -1,4 +1,11 @@
-import { FC, useContext, useRef, useState } from 'react';
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useContext,
+  useRef,
+  useState,
+} from 'react';
 import style from './datePicker.module.scss';
 import ButtonIcon from '../ui/buttons/buttonIcon/buttonIcon';
 import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
@@ -6,6 +13,13 @@ import Menu from '../menu/menu';
 import { IOptions } from '../../utils/types/common';
 import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
 import Context from '../../services/Context';
+import { getData } from '../../utils/hooks/getData';
+
+interface DatePicker {
+  choiceDate: string;
+  callTypes: string;
+  setChoiceDate: Dispatch<SetStateAction<string>>;
+}
 
 /**
  * Компонент - DatePicker.
@@ -15,9 +29,12 @@ import Context from '../../services/Context';
  * <DatePicker />
  */
 
-const DatePicker: FC = (): JSX.Element => {
+const DatePicker: FC<DatePicker> = ({
+  choiceDate,
+  callTypes,
+  setChoiceDate,
+}): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
-  const [choiceDate, setChoiceDate] = useState<string>('threeDays');
   const [filter, setFilter] = useState<boolean>(false);
 
   const value = useContext(Context);
@@ -41,7 +58,7 @@ const DatePicker: FC = (): JSX.Element => {
 
     setShowDropDown(false);
     setChoiceDate(optionClick!.value);
-    value?.setInterval(optionClick!.value);
+    getData(choiceDate, callTypes).then((data) => value?.setData(data));
     setFilter(true);
   };
 
