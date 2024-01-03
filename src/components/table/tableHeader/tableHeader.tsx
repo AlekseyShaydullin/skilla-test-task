@@ -1,10 +1,6 @@
 import { FC } from 'react';
 import style from './tableHeader.module.scss';
-import { IRefColumns } from '../../../utils/types/table';
-
-interface ITableHeader {
-  columns: Array<IRefColumns>;
-}
+import { configColumns } from '../table/tableConfig';
 
 /**
  * Компонент - TableHeader.
@@ -14,11 +10,11 @@ interface ITableHeader {
  * <TableHeader columns={refColumns} />
  */
 
-const TableHeader: FC<ITableHeader> = ({ columns }): JSX.Element => {
+const TableHeader: FC = (): JSX.Element => {
   return (
     <thead>
       <tr>
-        {columns.map((column) => (
+        {configColumns.map((column) => (
           <th key={column.key} className={style.cell} style={column.style}>
             {column.cellComponent(column.label, column.key)}
           </th>

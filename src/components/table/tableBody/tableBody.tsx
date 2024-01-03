@@ -1,25 +1,25 @@
 import { FC, useContext } from 'react';
 import style from './tableBody.module.scss';
-import { IConfigRows, IResults } from '../../../utils/types/table';
+import { IResults } from '../../../utils/types/table';
 import Context from '../../../services/Context';
 import { sortChecked } from '../../../utils/types/common';
+import { configRows } from '../table/tableConfig';
 
 interface ITableBody {
-  rows: Array<IConfigRows>;
+  data: Array<IResults> | null;
 }
 
-const TableBody: FC<ITableBody> = ({ rows }): JSX.Element => {
+const TableBody: FC<ITableBody> = ({ data }): JSX.Element => {
   const value = useContext(Context);
-
   let sortedData: Array<IResults> | null | undefined = [];
 
   if (
     value?.directionTime === 'default' &&
     value?.directionDuration === 'default'
   ) {
-    sortedData = value?.data;
+    sortedData = data;
   } else if (value?.directionTime !== 'default') {
-    sortedData = value?.data?.sort((a, b) => {
+    sortedData = data?.sort((a, b) => {
       const timeA = new Date(a.date).getTime();
       const timeB = new Date(b.date).getTime();
       return value?.directionTime === sortChecked.ASC
@@ -27,7 +27,7 @@ const TableBody: FC<ITableBody> = ({ rows }): JSX.Element => {
         : timeB - timeA;
     });
   } else if (value?.directionDuration !== 'default') {
-    sortedData = value?.data?.sort((a, b) => {
+    sortedData = data?.sort((a, b) => {
       const timeA = a.time;
       const timeB = b.time;
       return value?.directionDuration === sortChecked.ASC
@@ -67,7 +67,7 @@ const TableBody: FC<ITableBody> = ({ rows }): JSX.Element => {
     <tbody className={style.body__wrapper}>
       {sortedData?.map((data, index) => (
         <tr key={index} className={style.row}>
-          {rows.map((row, index) => (
+          {configRows.map((row, index) => (
             <td key={index} className={style.cell} style={row.style}>
               {row.cellComponent(data)}
             </td>

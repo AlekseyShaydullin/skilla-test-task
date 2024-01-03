@@ -10,7 +10,7 @@ import Icon from '../../../icon/icon';
  */
 export const IconTypeCallCell = (data: IResults): JSX.Element => (
   <>
-    {console.log(data?.in_out)}
+    {/* {console.log(data?.in_out)} */}
     {/* {console.log('===')} */}
     <Icon
       name={data?.in_out === 1 ? 'call-incoming' : 'call-outgoing'}

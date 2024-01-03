@@ -1,12 +1,14 @@
-import { getEndDate, getStartDate } from '../helpers/getDate';
+import { getEndDate, getStartDate } from './getDate';
 import { getCalls, getFilterCalls } from '../../api/api';
 import { IResults } from '../types/table';
 
-export const getData = async (choiceDate: string, callTypes: string) => {
+export const getDataTable = async (choiceDate: string, callTypes: string) => {
   let data: IResults[] = [];
 
   const dateStart = getStartDate(choiceDate);
   const dateEnd = getEndDate();
+
+  console.log(callTypes);
 
   if (callTypes === 'allTypes') {
     const res = await getCalls({

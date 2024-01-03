@@ -1,24 +1,19 @@
-import {
-  Dispatch,
-  FC,
-  SetStateAction,
-  useContext,
-  useRef,
-  useState,
-} from 'react';
+import { Dispatch, FC, SetStateAction, useRef, useState } from 'react';
 import style from './datePicker.module.scss';
 import ButtonIcon from '../ui/buttons/buttonIcon/buttonIcon';
 import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
 import Menu from '../menu/menu';
 import { IOptions } from '../../utils/types/common';
 import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
-import Context from '../../services/Context';
-import { getData } from '../../utils/hooks/getData';
+// import Context from '../../services/Context';
+import { getDataTable } from '../../utils/helpers/getDataTable';
+import { IResults } from '../../utils/types/table';
 
 interface DatePicker {
   choiceDate: string;
   callTypes: string;
   setChoiceDate: Dispatch<SetStateAction<string>>;
+  setData: Dispatch<SetStateAction<IResults[] | null>>;
 }
 
 /**
@@ -33,11 +28,10 @@ const DatePicker: FC<DatePicker> = ({
   choiceDate,
   callTypes,
   setChoiceDate,
+  setData,
 }): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [filter, setFilter] = useState<boolean>(false);
-
-  const value = useContext(Context);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -58,7 +52,7 @@ const DatePicker: FC<DatePicker> = ({
 
     setShowDropDown(false);
     setChoiceDate(optionClick!.value);
-    getData(choiceDate, callTypes).then((data) => value?.setData(data));
+    getDataTable(optionClick!.value, callTypes).then((data) => setData(data));
     setFilter(true);
   };
 

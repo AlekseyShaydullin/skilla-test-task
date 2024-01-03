@@ -1,14 +1,18 @@
 import { FC } from 'react';
 import style from './table.module.scss';
 import TableHeader from '../tableHeader/tableHeader';
-import { configRows, configColumns } from './tableConfig';
 import TableBody from '../tableBody/tableBody';
+import { IResults } from '../../../utils/types/table';
 
-const Table: FC = (): JSX.Element => {
+interface ITable {
+  data: Array<IResults> | null;
+}
+
+const Table: FC<ITable> = ({ data }): JSX.Element => {
   return (
     <table className={style.tableWrapper}>
-      <TableHeader columns={configColumns} />
-      <TableBody rows={configRows} />
+      <TableHeader />
+      <TableBody data={data} />
     </table>
   );
 };
