@@ -1,4 +1,5 @@
 import { RefObject } from 'react';
+
 import useEscapeKey from './useEscapeKey';
 import useOutsideClick from './useOutsideClick';
 

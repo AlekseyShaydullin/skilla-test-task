@@ -12,7 +12,6 @@ export const getSvgImport = async (
 ) => {
   /** Необходимо убедиться, что все иконки располежены в одной директории */
   /** Если в коде большая база иконок, то следует в пропсах прокидывать и iconPath */
-
   importedIconRef.current = (
     await import(`../../assets/icons/${name}.svg`)
   ).default;

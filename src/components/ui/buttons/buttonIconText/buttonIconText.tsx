@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import cn from 'classnames';
 
 import style from './buttonIconText.module.scss';
+
 import Icon from '../../icon/icon';
 import Typography from '../../typography/typography';
 
@@ -36,7 +37,13 @@ interface IButtonIconText {
    * Можно управлять стилизацией. Иконка первая? тогда пиши true
    * */
   iconFirst: boolean;
+  /**
+   * callback при клике на кнопку
+   */
   onClick?: (id: string) => void;
+  /**
+   * ID кнопки
+   */
   id?: string;
 }
 

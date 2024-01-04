@@ -1,16 +1,37 @@
 import { FC, useRef, useState } from 'react';
+
 import style from './player.module.scss';
+
 import Typography from '../ui/typography/typography';
-import { IResults } from '../../utils/types/table';
 import ButtonIcon from '../ui/buttons/buttonIcon/buttonIcon';
+
+import { IResults } from '../../utils/types/table';
 import { useGetAudioSrc } from '../../utils/hooks/useGetAudioSrc';
 
 interface IPlayer {
+  /**
+   * Отсортированные и отфильтрованные данные с сервера
+   */
   data: IResults;
+  /**
+   * Индех компонента
+   */
   index: string;
+  /**
+   * Продолжительность звонка
+   */
   duration: string;
 }
 
+/**
+ * Компонент создания Кастомного плеера
+ * @example
+ * <Player
+ *   data={data}
+ *   index={index}
+ *   duration={duration}
+ *  />
+ */
 const Player: FC<IPlayer> = ({ data, index, duration }): JSX.Element => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,9 +97,7 @@ const Player: FC<IPlayer> = ({ data, index, duration }): JSX.Element => {
           controls={false}
           onLoadedData={handleLoadedData}
           onEnded={handleEnded}
-        >
-          <source src="#" type="audio/mpeg" />
-        </audio>
+        ></audio>
       </div>
     </div>
   );

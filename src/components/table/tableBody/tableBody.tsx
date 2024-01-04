@@ -1,40 +1,22 @@
 import { FC, useContext } from 'react';
+
 import style from './tableBody.module.scss';
-import { IResults } from '../../../utils/types/table';
+
 import Context from '../../../services/Context';
-import { sortChecked } from '../../../utils/types/common';
+
 import { configRows } from '../table/tableConfig';
+import getSortedData from '../../../utils/helpers/getSortedData';
 
-interface ITableBody {
-  data: Array<IResults> | null;
-}
-
-const TableBody: FC<ITableBody> = ({ data }): JSX.Element => {
+/**
+ * Компонент - TableBody.
+ * @returns Отрисовывает Тело Таблицы
+ * @example <TableBody />
+ */
+const TableBody: FC = (): JSX.Element => {
   const value = useContext(Context);
-  let sortedData: Array<IResults> | null | undefined = [];
 
-  if (
-    value?.directionTime === 'default' &&
-    value?.directionDuration === 'default'
-  ) {
-    sortedData = data;
-  } else if (value?.directionTime !== 'default') {
-    sortedData = data?.sort((a, b) => {
-      const timeA = new Date(a.date).getTime();
-      const timeB = new Date(b.date).getTime();
-      return value?.directionTime === sortChecked.ASC
-        ? timeA - timeB
-        : timeB - timeA;
-    });
-  } else if (value?.directionDuration !== 'default') {
-    sortedData = data?.sort((a, b) => {
-      const timeA = a.time;
-      const timeB = b.time;
-      return value?.directionDuration === sortChecked.ASC
-        ? timeA - timeB
-        : timeB - timeA;
-    });
-  }
+  // Сортируем данные перед отрисовкой таблицы
+  const sortedData = getSortedData(value);
 
   // const [isHovering, setHovering] = useState(false);
   // const refRow = useRef<HTMLTableRowElement>(null);

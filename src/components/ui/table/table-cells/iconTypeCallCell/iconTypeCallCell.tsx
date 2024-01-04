@@ -1,7 +1,10 @@
 import cn from 'classnames';
+
 import style from './iconTypeCallCell.module.scss';
-import { IResults } from '../../../../../utils/types/table';
+
 import Icon from '../../../icon/icon';
+
+import { IResults } from '../../../../../utils/types/table';
 
 /**
  * Компонент ячейки для колонки Тип звонка
@@ -9,24 +12,20 @@ import Icon from '../../../icon/icon';
  * @param data - Принимает данные с сервера
  */
 export const IconTypeCallCell = (data: IResults): JSX.Element => (
-  <>
-    {/* {console.log(data?.in_out)} */}
-    {/* {console.log('===')} */}
-    <Icon
-      name={data?.in_out === 1 ? 'call-incoming' : 'call-outgoing'}
-      isColored
-      extraClass={cn(
-        style.iconCall,
-        data?.in_out === 1 && data.time !== 0
-          ? style.iconCall_blue
-          : data?.in_out === 0 && data?.status !== 'Не дозвонился'
-            ? style.iconCall_green
-            : data?.status === 'Не дозвонился'
+  <Icon
+    name={data?.in_out === 1 ? 'call-incoming' : 'call-outgoing'}
+    isColored
+    extraClass={cn(
+      style.iconCall,
+      data?.in_out === 1 && data.time !== 0
+        ? style.iconCall_blue
+        : data?.in_out === 0 && data?.status !== 'Не дозвонился'
+          ? style.iconCall_green
+          : data?.status === 'Не дозвонился'
+            ? style.iconCall_red
+            : data?.time === 0
               ? style.iconCall_red
-              : data?.time === 0
-                ? style.iconCall_red
-                : ''
-      )}
-    />
-  </>
+              : ''
+    )}
+  />
 );

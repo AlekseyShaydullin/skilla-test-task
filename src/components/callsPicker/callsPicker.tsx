@@ -1,36 +1,38 @@
-import { Dispatch, FC, SetStateAction, useRef, useState } from 'react';
+import { FC, useContext, useRef, useState } from 'react';
+
 import style from './callsPicker.module.scss';
-import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
+
 import Menu from '../menu/menu';
+import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
+
 import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
-import { IOptions } from '../../utils/types/common';
+import {
+  IOptions,
+  optionsCallsLabel,
+  optionsCallsValue,
+} from '../../utils/types/common';
 import { getDataTable } from '../../utils/helpers/getDataTable';
-// import Context from '../../services/Context';
-import { IResults } from '../../utils/types/table';
 
-interface ICallsPicker {
-  choiceDate: string;
-  callTypes: string;
-  setCallTypes: Dispatch<SetStateAction<string>>;
-  setData: Dispatch<SetStateAction<IResults[] | null>>;
-}
+import Context from '../../services/Context';
 
-const CallsPicker: FC<ICallsPicker> = ({
-  choiceDate,
-  callTypes,
-  setCallTypes,
-  setData,
-}): JSX.Element => {
+/**
+ * Компонент - CallsPicker
+ * @returns Отрисовывает дропдаун меню "Все типы"
+ * @example <CallsPicker />
+ */
+const CallsPicker: FC = (): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [filter, setFilter] = useState<boolean>(false);
+
+  const value = useContext(Context);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const options = [
-    { label: 'Все типы', value: 'allTypes' },
-    { label: 'Входящие', value: 'incoming' },
-    { label: 'Исходящие', value: 'outgoing' },
+    { label: optionsCallsLabel.ALLTYPES, value: optionsCallsValue.ALLTYPES },
+    { label: optionsCallsLabel.INCOMING, value: optionsCallsValue.INCOMING },
+    { label: optionsCallsLabel.OUTGOING, value: optionsCallsValue.OUTGOING },
   ];
 
   const toggleDropDown = () => {
@@ -39,18 +41,27 @@ const CallsPicker: FC<ICallsPicker> = ({
 
   const toggleDropFilters = () => {
     setFilter(!filter);
-    setCallTypes('allTypes');
+    value?.setCallTypes(optionsCallsValue.ALLTYPES);
+    getDataTable(optionsCallsValue.ALLTYPES, value!.choiceDate).then(
+      (data) => value?.setData(data)
+    );
   };
 
   const handleOptionClick = (e: string, options: Array<IOptions>) => {
     const optionClick = options.find((option) => option.value === e);
+    const valueClick = optionClick!.value;
+
     setShowDropDown(false);
-    setCallTypes(optionClick!.value);
-    getDataTable(choiceDate, optionClick!.value).then((data) => setData(data));
+    value?.setCallTypes(valueClick);
+    getDataTable(valueClick, value!.choiceDate).then(
+      (data) => value?.setData(data)
+    );
     setFilter(true);
   };
 
-  const titleButton = options.find((option) => option.value === callTypes);
+  const titleButton = options.find(
+    (option) => option.value === value?.callTypes
+  );
 
   useOutsideClickAndEscape(
     menuRef,
@@ -76,13 +87,13 @@ const CallsPicker: FC<ICallsPicker> = ({
         onClick={toggleDropDown}
         ref={buttonRef}
       />
-      {showDropDown && (
+      {showDropDown && value && (
         <Menu
           ref={menuRef}
           options={options}
           onItemClick={(e) => handleOptionClick(e.value, options)}
           layoutClassName={style.dropdown}
-          checkOption={callTypes}
+          checkOption={value.callTypes}
           itemClassName={style.itemParent}
         />
       )}

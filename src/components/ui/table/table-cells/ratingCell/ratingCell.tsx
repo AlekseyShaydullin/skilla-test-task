@@ -1,7 +1,10 @@
 import cn from 'classnames';
+
 import style from './ratingCell.module.scss';
-import { getRandom } from '../../../../../utils/helpers/getRandom';
+
 import Typography from '../../../typography/typography';
+
+import { getRandom } from '../../../../../utils/helpers/getRandom';
 
 /**
  * Компонент ячейки для колонки Оценка

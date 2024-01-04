@@ -1,7 +1,10 @@
-import style from './avatarCell.module.scss';
-import { IResults } from '../../../../../utils/types/table';
 import { FC } from 'react';
+
+import style from './avatarCell.module.scss';
+
 import Icon from '../../../icon/icon';
+
+import { IResults } from '../../../../../utils/types/table';
 
 /**
  * Компонент ячейки для Аватарок

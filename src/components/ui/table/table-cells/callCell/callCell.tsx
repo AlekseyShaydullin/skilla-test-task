@@ -1,7 +1,10 @@
 import { FC } from 'react';
+
 import style from './callCell.module.scss';
-import { IResults } from '../../../../../utils/types/table';
+
 import Typography from '../../../typography/typography';
+
+import { IResults } from '../../../../../utils/types/table';
 import { fixPhoneNumber } from '../../../../../utils/helpers/fixPhoneNumber';
 
 /**

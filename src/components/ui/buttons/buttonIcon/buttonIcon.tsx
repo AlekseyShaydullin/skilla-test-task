@@ -1,7 +1,9 @@
 import { forwardRef } from 'react';
 import cn from 'classnames';
-import Icon from '../../icon/icon';
+
 import style from './buttonIcon.module.scss';
+
+import Icon from '../../icon/icon';
 
 interface IButtonIcon {
   /**
@@ -20,7 +22,13 @@ interface IButtonIcon {
    * Cтилизация кнопки
    * */
   buttonClass?: string;
+  /**
+   * callback при клике на кнопку
+   */
   onClick?: () => void;
+  /**
+   * ID кнопки
+   */
   id?: string;
 }
 

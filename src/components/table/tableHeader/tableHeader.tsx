@@ -1,15 +1,14 @@
 import { FC } from 'react';
+
 import style from './tableHeader.module.scss';
+
 import { configColumns } from '../table/tableConfig';
 
 /**
  * Компонент - TableHeader.
- * Отрисовывает Header таблицы.
- * @param columns - принимает на вход данные ячеек шапки таблицы
- * @example
- * <TableHeader columns={refColumns} />
+ * @returns Отрисовывает Header таблицы.
+ * @example <TableHeader />
  */
-
 const TableHeader: FC = (): JSX.Element => {
   return (
     <thead>

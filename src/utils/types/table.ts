@@ -1,9 +1,8 @@
+import { ReactNode } from 'react';
+
 /**
  * Типизация данных шапки таблицы
  */
-
-import { ReactNode } from 'react';
-
 export interface IRefColumns {
   key: string;
   label: string;
@@ -12,6 +11,13 @@ export interface IRefColumns {
     justifyContent?: string;
   };
   cellComponent: (data: string, key: string) => ReactNode;
+}
+
+export interface IConfigRows {
+  style: {
+    width: string;
+  };
+  cellComponent: (data: IResults) => ReactNode;
 }
 
 export interface IResults {
@@ -85,11 +91,4 @@ export interface IResults {
 export interface IData {
   total_rows: string;
   results: Array<IResults>;
-}
-
-export interface IConfigRows {
-  style: {
-    width: string;
-  };
-  cellComponent: (data: IResults) => ReactNode;
 }

@@ -1,37 +1,32 @@
-import { Dispatch, FC, SetStateAction, useRef, useState } from 'react';
+import { FC, useContext, useRef, useState } from 'react';
+
 import style from './datePicker.module.scss';
+
+import Menu from '../menu/menu';
 import ButtonIcon from '../ui/buttons/buttonIcon/buttonIcon';
 import ButtonIconText from '../ui/buttons/buttonIconText/buttonIconText';
-import Menu from '../menu/menu';
-import { IOptions } from '../../utils/types/common';
-import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
-// import Context from '../../services/Context';
-import { getDataTable } from '../../utils/helpers/getDataTable';
-import { IResults } from '../../utils/types/table';
 
-interface DatePicker {
-  choiceDate: string;
-  callTypes: string;
-  setChoiceDate: Dispatch<SetStateAction<string>>;
-  setData: Dispatch<SetStateAction<IResults[] | null>>;
-}
+import {
+  IOptions,
+  optionsDateLabel,
+  optionsDateValue,
+} from '../../utils/types/common';
+import useOutsideClickAndEscape from '../../utils/hooks/useOutsideClickAndEscape';
+import { getDataTable } from '../../utils/helpers/getDataTable';
+
+import Context from '../../services/Context';
 
 /**
  * Компонент - DatePicker.
- * Позволяет делать выборку списка звонков по 3 дням, неделе, месяцу, году.
- * Так же можно задать конкретный интересующий интервал в формате: DD.MM.YY - DD.MM.YY
- * @example
- * <DatePicker />
+ * @returns Отрисовывает дропдаун меню
+ * Позволяет делать времянную выборку звонков: 3 дня, Неделя, Месяц, Год.
+ * @example <DatePicker />
  */
-
-const DatePicker: FC<DatePicker> = ({
-  choiceDate,
-  callTypes,
-  setChoiceDate,
-  setData,
-}): JSX.Element => {
+const DatePicker: FC = (): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [filter, setFilter] = useState<boolean>(false);
+
+  const value = useContext(Context);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -41,22 +36,29 @@ const DatePicker: FC<DatePicker> = ({
   };
 
   const options = [
-    { label: 'Три дня', value: 'threeDays' },
-    { label: 'Неделя', value: 'week' },
-    { label: 'Месяц', value: 'month' },
-    { label: 'Год', value: 'year' },
+    { label: optionsDateLabel.THREEDAYS, value: optionsDateValue.THREEDAYS },
+    { label: optionsDateLabel.WEEK, value: optionsDateValue.WEEK },
+    { label: optionsDateLabel.MONTH, value: optionsDateValue.MONTH },
+    { label: optionsDateLabel.YEAR, value: optionsDateValue.YEAR },
   ];
 
   const handleOptionClick = (e: string, options: Array<IOptions>) => {
     const optionClick = options.find((option) => option.value === e);
+    const valueClick = optionClick!.value;
+
+    console.log(valueClick);
 
     setShowDropDown(false);
-    setChoiceDate(optionClick!.value);
-    getDataTable(optionClick!.value, callTypes).then((data) => setData(data));
+    value?.setChoiceDate(valueClick);
+    getDataTable(value!.callTypes, valueClick).then(
+      (data) => value?.setData(data)
+    );
     setFilter(true);
   };
 
-  const titleButton = options.find((option) => option.value === choiceDate);
+  const titleButton = options.find(
+    (option) => option.value === value?.choiceDate
+  );
 
   useOutsideClickAndEscape(
     menuRef,
@@ -89,13 +91,13 @@ const DatePicker: FC<DatePicker> = ({
           onClick={toggleDropDown}
           ref={buttonRef}
         />
-        {showDropDown && (
+        {showDropDown && value && (
           <Menu
             ref={menuRef}
             options={options}
             onItemClick={(e) => handleOptionClick(e.value, options)}
             layoutClassName={style.dropdown}
-            checkOption={choiceDate}
+            checkOption={value.choiceDate}
             itemClassName={style.itemParent}
           />
         )}

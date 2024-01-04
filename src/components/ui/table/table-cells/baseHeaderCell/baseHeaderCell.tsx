@@ -1,4 +1,5 @@
 import style from './baseHeaderCell.module.scss';
+
 import Typography from '../../../typography/typography';
 
 /**

@@ -1,10 +1,13 @@
 import { FC } from 'react';
 import cn from 'classnames';
+
 import style from './durationCell.module.scss';
-import { IResults } from '../../../../../utils/types/table';
+
 import Typography from '../../../typography/typography';
-import { getDuration } from '../../../../../utils/helpers/getDuration';
 import Player from '../../../../player/player';
+
+import { IResults } from '../../../../../utils/types/table';
+import { getDuration } from '../../../../../utils/helpers/getDuration';
 
 /**
  * Компонент ячейки для колонки Длительность

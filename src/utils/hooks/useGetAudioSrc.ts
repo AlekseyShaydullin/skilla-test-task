@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import { getRecord } from '../../api/api';
+
 import { IResults } from '../types/table';
 
 /**

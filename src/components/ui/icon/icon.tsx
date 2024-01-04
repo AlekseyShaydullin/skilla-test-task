@@ -1,4 +1,5 @@
 import { FC, memo, useId, useRef, useState } from 'react';
+
 import { getSvgImport } from '../../../utils/helpers/getSvgImport';
 
 export interface IIcon {

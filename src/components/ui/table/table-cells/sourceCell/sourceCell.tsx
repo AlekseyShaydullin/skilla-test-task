@@ -1,6 +1,8 @@
-import { IResults } from '../../../../../utils/types/table';
-import Typography from '../../../typography/typography';
 import style from './sourceCell.module.scss';
+
+import Typography from '../../../typography/typography';
+
+import { IResults } from '../../../../../utils/types/table';
 
 /**
  * Компонент ячейки для колонки Источник

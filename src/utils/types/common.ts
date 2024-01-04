@@ -15,7 +15,39 @@ export interface IOptions {
 }
 
 export enum sortChecked {
-  Default = 'default',
+  DEFAULT = 'default',
   ASC = 'asc',
   DESC = 'desc',
+}
+
+export enum optionsCallsLabel {
+  ALLTYPES = 'Все типы',
+  INCOMING = 'Входящие',
+  OUTGOING = 'Исходящие',
+}
+
+export enum optionsCallsValue {
+  ALLTYPES = 'allTypes',
+  INCOMING = 'incoming',
+  OUTGOING = 'outgoing',
+}
+
+export enum optionsDateLabel {
+  THREEDAYS = 'Три дня',
+  WEEK = 'Неделя',
+  MONTH = 'Месяц',
+  YEAR = 'Год',
+}
+
+export enum optionsDateValue {
+  THREEDAYS = 'threeDays',
+  WEEK = 'week',
+  MONTH = 'month',
+  YEAR = 'year',
+}
+
+export enum inOut {
+  INCOMING = 1,
+  OUTGOING = 0,
+  ABSENT = '',
 }

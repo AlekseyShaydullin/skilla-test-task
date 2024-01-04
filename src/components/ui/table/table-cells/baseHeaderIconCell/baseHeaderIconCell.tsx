@@ -1,8 +1,11 @@
 import { useContext } from 'react';
 
 import style from './baseHeaderIconCell.module.scss';
+
 import ButtonIconText from '../../../buttons/buttonIconText/buttonIconText';
+
 import Context from '../../../../../services/Context';
+
 import { getHandelSort } from '../../../../../utils/helpers/getHandelSort';
 
 /**

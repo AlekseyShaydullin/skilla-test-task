@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import cn from 'classnames';
+
 import style from './typography.module.scss';
 
 interface IProps {
