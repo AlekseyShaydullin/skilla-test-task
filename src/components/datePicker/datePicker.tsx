@@ -19,7 +19,7 @@ import Context from '../../services/Context';
 /**
  * Компонент - DatePicker.
  * @returns Отрисовывает дропдаун меню
- * Позволяет делать времянную выборку звонков: 3 дня, Неделя, Месяц, Год.
+ * Позволяет делать временную выборку звонков: 3 дня, Неделя, Месяц, Год.
  * @example <DatePicker />
  */
 const DatePicker: FC = (): JSX.Element => {

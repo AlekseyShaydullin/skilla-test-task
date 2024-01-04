@@ -43,18 +43,16 @@ const Player: FC<IPlayer> = ({ data, index, duration }): JSX.Element => {
   const togglePlay = (index: string) => {
     setIsLoading(true);
 
-    if (isLoading) {
-      if (isPlaying && selectedRecordIndex === index && audioRef.current) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        setSelectedRecordIndex(index);
-        setIsPlaying(true);
-        setIsLoading(true);
-        if (audioRef.current) {
-          audioRef.current.src = audioSrc;
-          audioRef.current.play();
-        }
+    if (isPlaying && selectedRecordIndex === index && audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      setSelectedRecordIndex(index);
+      setIsPlaying(true);
+      setIsLoading(true);
+      if (audioRef.current) {
+        audioRef.current.src = audioSrc;
+        audioRef.current.play();
       }
     }
   };
