@@ -17,7 +17,11 @@ export interface IConfigRows {
   style: {
     width: string;
   };
-  cellComponent: (data: IResults) => ReactNode;
+  cellComponent: (
+    data: IResults,
+    key: string | number,
+    isHovering: number | null
+  ) => ReactNode;
 }
 
 export interface IResults {

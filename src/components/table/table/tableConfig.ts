@@ -1,3 +1,4 @@
+import { IConfigRows, IRefColumns } from '../../../utils/types/table';
 import AvatarCell from '../../ui/table/table-cells/avatarCell/avatarCell';
 import { BaseHeaderCell } from '../../ui/table/table-cells/baseHeaderCell/baseHeaderCell';
 import BaseHeaderIconCell from '../../ui/table/table-cells/baseHeaderIconCell/baseHeaderIconCell';
@@ -11,7 +12,7 @@ import { TimeCell } from '../../ui/table/table-cells/timeCell/timeCell';
 /**
  * Конфигурации ячеек шапки таблицы
  */
-export const configColumns = [
+export const configColumns: Array<IRefColumns> = [
   {
     key: 'type',
     label: 'Тип',
@@ -59,7 +60,7 @@ export const configColumns = [
 /**
  * Конфигурация таблицы
  */
-export const configRows = [
+export const configRows: Array<IConfigRows> = [
   {
     style: { width: '54px' },
     cellComponent: IconTypeCallCell,

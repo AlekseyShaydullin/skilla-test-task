@@ -1,4 +1,5 @@
 import { FC, useRef, useState } from 'react';
+import cn from 'classnames';
 
 import style from './player.module.scss';
 
@@ -21,6 +22,10 @@ interface IPlayer {
    * Продолжительность звонка
    */
   duration: string;
+  /**
+   * Флаг который показывает наведена мышка на строку с плеером или нет
+   */
+  isHovered: boolean;
 }
 
 /**
@@ -30,9 +35,15 @@ interface IPlayer {
  *   data={data}
  *   index={index}
  *   duration={duration}
+ *   isHovered={isHovered}
  *  />
  */
-const Player: FC<IPlayer> = ({ data, index, duration }): JSX.Element => {
+const Player: FC<IPlayer> = ({
+  data,
+  index,
+  duration,
+  isHovered,
+}): JSX.Element => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedRecordIndex, setSelectedRecordIndex] = useState('');
@@ -65,7 +76,12 @@ const Player: FC<IPlayer> = ({ data, index, duration }): JSX.Element => {
   };
 
   return (
-    <div className={style.player__wrapper}>
+    <div
+      className={cn(
+        style.player__wrapper,
+        isHovered ? style.player__wrapper_hover : ''
+      )}
+    >
       <div className={style.player__widget}>
         <Typography tag="p" className={style.primary}>
           {duration}

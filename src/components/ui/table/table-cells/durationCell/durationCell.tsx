@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import cn from 'classnames';
 
 import style from './durationCell.module.scss';
@@ -14,22 +13,40 @@ import { getDuration } from '../../../../../utils/helpers/getDuration';
  * Отрисовывает плеер и показывает длительность разговора
  * @param data - Принимает данные с сервера
  */
-const DurationCell: FC<IResults> = (data): JSX.Element => {
+const DurationCell = (
+  data: IResults,
+  index: string | number,
+  isHovering: number | null
+): JSX.Element => {
   const duration = getDuration(data.time);
+
+  const isHovered = isHovering === index;
+
+  console.log(isHovered);
 
   return (
     <div
       className={cn(
         style.duration,
-        data.record === '' ? style.duration_emptyRecord : ''
+        data.record === '' || !isHovered ? style.duration_emptyRecord : ''
       )}
     >
-      {data.record === '' ? null : (
-        <Player data={data} index={data.record} duration={duration} />
+      {isHovered ? (
+        <>
+          {data.record === '' ? null : (
+            <Player
+              data={data}
+              index={data.record}
+              duration={duration}
+              isHovered={isHovered}
+            />
+          )}
+        </>
+      ) : (
+        <Typography tag="p" className={cn(style.primary, style.time)}>
+          {duration}
+        </Typography>
       )}
-      <Typography tag="p" className={cn(style.primary, style.time)}>
-        {duration}
-      </Typography>
     </div>
   );
 };
