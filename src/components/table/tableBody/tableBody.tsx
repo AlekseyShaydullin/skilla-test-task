@@ -14,41 +14,18 @@ import getSortedData from '../../../utils/helpers/getSortedData';
  */
 const TableBody: FC = (): JSX.Element => {
   const [isHovering, setHovering] = useState<number | null>(null);
-  // const refRow = useRef<HTMLTableRowElement>(null);
   const value = useContext(Context);
 
   // Сортируем данные перед отрисовкой таблицы
   const sortedData = getSortedData(value);
 
+  // Настраиваем состояние ховера на строки
   const handleMouseEnter = (index: number) => {
     setHovering(index);
   };
-
   const handleMouseLeave = () => {
     setHovering(null);
   };
-
-  // const on = () => setHovering(true);
-  // const off = () => setHovering(false);
-
-  // useEffect(() => {
-  //   console.log(refRow.current);
-
-  //   if (!refRow.current) {
-  //     return;
-  //   }
-  //   const node = refRow.current;
-
-  //   node.addEventListener('mouseenter', on);
-  //   node.addEventListener('mousemove', on);
-  //   node.addEventListener('mouseleave', off);
-
-  //   return function () {
-  //     node.removeEventListener('mouseenter', on);
-  //     node.removeEventListener('mousemove', on);
-  //     node.removeEventListener('mouseleave', off);
-  //   };
-  // }, [refRow]);
 
   return (
     <tbody className={style.body__wrapper}>
@@ -61,7 +38,7 @@ const TableBody: FC = (): JSX.Element => {
         >
           {configRows.map((row, index) => (
             <td key={index} className={style.cell} style={row.style}>
-              {row.cellComponent(data, data.id, isHovering)}
+              {row.cellComponent(data, isHovering)}
             </td>
           ))}
         </tr>

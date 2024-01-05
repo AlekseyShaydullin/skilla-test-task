@@ -7,6 +7,7 @@ import Player from '../../../../player/player';
 
 import { IResults } from '../../../../../utils/types/table';
 import { getDuration } from '../../../../../utils/helpers/getDuration';
+// import { memo } from 'react';
 
 /**
  * Компонент ячейки для колонки Длительность
@@ -15,12 +16,11 @@ import { getDuration } from '../../../../../utils/helpers/getDuration';
  */
 const DurationCell = (
   data: IResults,
-  index: string | number,
   isHovering: number | null
 ): JSX.Element => {
   const duration = getDuration(data.time);
 
-  const isHovered = isHovering === index;
+  const isHovered = isHovering === data.id;
 
   console.log(isHovered);
 
@@ -50,5 +50,4 @@ const DurationCell = (
     </div>
   );
 };
-
 export default DurationCell;
