@@ -3,6 +3,7 @@ import cn from 'classnames';
 import style from './ratingCell.module.scss';
 
 import Typography from '../../../typography/typography';
+
 import { IResults } from '../../../../../utils/types/table';
 
 /**

@@ -7,7 +7,6 @@ import Player from '../../../../player/player';
 
 import { IResults } from '../../../../../utils/types/table';
 import { getDuration } from '../../../../../utils/helpers/getDuration';
-// import { memo } from 'react';
 
 /**
  * Компонент ячейки для колонки Длительность
@@ -19,10 +18,7 @@ const DurationCell = (
   isHovering: number | null
 ): JSX.Element => {
   const duration = getDuration(data.time);
-
   const isHovered = isHovering === data.id;
-
-  console.log(isHovered);
 
   return (
     <div

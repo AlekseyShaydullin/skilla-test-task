@@ -1,13 +1,14 @@
-import { IConfigRows, IRefColumns } from '../../../utils/types/table';
-import AvatarCell from '../../ui/table/table-cells/avatarCell/avatarCell';
-import { BaseHeaderCell } from '../../ui/table/table-cells/baseHeaderCell/baseHeaderCell';
-import BaseHeaderIconCell from '../../ui/table/table-cells/baseHeaderIconCell/baseHeaderIconCell';
-import CallCell from '../../ui/table/table-cells/callCell/callCell';
-import DurationCell from '../../ui/table/table-cells/durationCell/durationCell';
-import { IconTypeCallCell } from '../../ui/table/table-cells/iconTypeCallCell/iconTypeCallCell';
-import RatingCell from '../../ui/table/table-cells/ratingCell/ratingCell';
-import SourceCell from '../../ui/table/table-cells/sourceCell/sourceCell';
-import { TimeCell } from '../../ui/table/table-cells/timeCell/timeCell';
+import { IConfigRows, IRefColumns } from '../../utils/types/table';
+
+import AvatarCell from '../ui/table/table-cells/avatarCell/avatarCell';
+import { BaseHeaderCell } from '../ui/table/table-cells/baseHeaderCell/baseHeaderCell';
+import BaseHeaderIconCell from '../ui/table/table-cells/baseHeaderIconCell/baseHeaderIconCell';
+import CallCell from '../ui/table/table-cells/callCell/callCell';
+import DurationCell from '../ui/table/table-cells/durationCell/durationCell';
+import { IconTypeCallCell } from '../ui/table/table-cells/iconTypeCallCell/iconTypeCallCell';
+import RatingCell from '../ui/table/table-cells/ratingCell/ratingCell';
+import SourceCell from '../ui/table/table-cells/sourceCell/sourceCell';
+import { TimeCell } from '../ui/table/table-cells/timeCell/timeCell';
 
 /**
  * Конфигурации ячеек шапки таблицы

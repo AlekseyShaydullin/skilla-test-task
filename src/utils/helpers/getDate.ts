@@ -11,7 +11,7 @@ export const getEndDate = () => {
 /**
  * Функция, которая возвращает date_start для запроса на сервер
  * @param interval - Данные из DatePicker
- * @returns Возвращает дату в формате YYYY-MM-DD
+ * @returns Возвращает дату
  */
 export const getStartDate = (interval: string | undefined) => {
   /** Заготовки под даты */

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import style from './tableHeader.module.scss';
 
-import { configColumns } from '../table/tableConfig';
+import { configColumns } from '../tableConfig';
 
 /**
  * Компонент - TableHeader.

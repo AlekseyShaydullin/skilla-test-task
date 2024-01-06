@@ -1,0 +1,18 @@
+@use '../../../../stylesheets/variables.scss' as *;
+@use '../../../../stylesheets/mixins' as *;
+
+.titleWrapper {
+  padding: 40px 0 16px 40px;
+  display: flex;
+  gap: 2px;
+}
+
+.primary {
+  color: $text-primary;
+}
+
+.span {
+  color: $text-header;
+  font-size: $s-font-size;
+  line-height: $xs-line-height;
+}
