@@ -20,10 +20,6 @@ export const getDataTable = async (
   const dateStart = getStartDate(choiceDate);
   const dateEnd = getEndDate();
 
-  console.log(callTypes);
-
-  console.log(dateStart);
-  //
   if (callTypes === optionsCallsValue.ALLTYPES) {
     const res = await getCalls({
       param_one: dateStart,

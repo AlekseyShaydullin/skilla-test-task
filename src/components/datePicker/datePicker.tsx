@@ -46,8 +46,6 @@ const DatePicker: FC = (): JSX.Element => {
     const optionClick = options.find((option) => option.value === e);
     const valueClick = optionClick!.value;
 
-    console.log(valueClick);
-
     setShowDropDown(false);
     value?.setChoiceDate(valueClick);
     getDataTable(value!.callTypes, valueClick).then(
