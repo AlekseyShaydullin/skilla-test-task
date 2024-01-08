@@ -14,24 +14,28 @@ export interface IOptions {
   icon?: string;
 }
 
+/** Опции сортировки */
 export enum sortChecked {
   DEFAULT = 'default',
   ASC = 'asc',
   DESC = 'desc',
 }
 
+/** Опции лэйблов для дропдауна Calls Picker */
 export enum optionsCallsLabel {
   ALLTYPES = 'Все типы',
   INCOMING = 'Входящие',
   OUTGOING = 'Исходящие',
 }
 
+/** Опции значений для дропдауна Calls Picker */
 export enum optionsCallsValue {
   ALLTYPES = 'allTypes',
   INCOMING = 'incoming',
   OUTGOING = 'outgoing',
 }
 
+/** Опции лэйблов для дропдауна Date Picker */
 export enum optionsDateLabel {
   THREEDAYS = 'Три дня',
   WEEK = 'Неделя',
@@ -39,6 +43,7 @@ export enum optionsDateLabel {
   YEAR = 'Год',
 }
 
+/** Опции значений для дропдауна Date Picker */
 export enum optionsDateValue {
   THREEDAYS = 'threeDays',
   WEEK = 'week',
@@ -46,6 +51,7 @@ export enum optionsDateValue {
   YEAR = 'year',
 }
 
+/** Опции значений для определния входящих или исходящих звонков */
 export enum inOut {
   INCOMING = 1,
   OUTGOING = 0,

@@ -7,7 +7,9 @@ import { IResults } from '../types/table';
  * @param value - Принимает контекст
  * @returns Возвращает отсортированный (по дате, по длительности) массив объектов
  */
-const getSortedData = (value: IContext | null) => {
+const getSortedData = (
+  value: IContext | null
+): Array<IResults> | null | undefined => {
   let sortedData: Array<IResults> | null | undefined = [];
 
   if (

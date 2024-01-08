@@ -24,7 +24,7 @@ const useOutsideClick = (
   element: Document | Element,
   callback: () => void,
   handlerRef?: RefObject<HTMLDivElement> | RefObject<HTMLButtonElement>
-) => {
+): void => {
   useEffect(() => {
     const handleClickOutside: EventListener = (event) => {
       if (
@@ -46,6 +46,7 @@ const useOutsideClick = (
     return () => {
       element.removeEventListener('mousedown', handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [callback]);
 };
 

@@ -15,3 +15,11 @@ export interface IReq {
   uri: string;
   paramsUri: IParams;
 }
+
+export type TRequest = <T>(
+  url: string,
+  paramUriFirst: string,
+  paramUriSecond: string,
+  options: RequestInit,
+  paramUriThird?: string
+) => Promise<T>;

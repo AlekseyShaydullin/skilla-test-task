@@ -11,7 +11,7 @@ const useOutsideClickAndEscape = (
   element: Document | Element,
   callback: () => void,
   handlerRef?: RefObject<HTMLDivElement> | RefObject<HTMLButtonElement>
-) => {
+): void => {
   useOutsideClick(ref, element, callback, handlerRef);
   useEscapeKey(callback);
 };

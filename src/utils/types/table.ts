@@ -13,6 +13,9 @@ export interface IRefColumns {
   cellComponent: (data: string, key: string) => ReactNode;
 }
 
+/**
+ * Типизация данных строк таблицы
+ */
 export interface IConfigRows {
   style: {
     width: string;
@@ -20,6 +23,7 @@ export interface IConfigRows {
   cellComponent: (data: IResults, isHovering: number | null) => ReactNode;
 }
 
+/** Типизация данных о звонке */
 export interface IResults {
   id: number;
   partnership_id: string;
@@ -88,6 +92,7 @@ export interface IResults {
   candidate_vacancy_name: string;
 }
 
+/** Типизация полученных данных с сервера */
 export interface IData {
   total_rows: string;
   results: Array<IResults>;

@@ -3,7 +3,7 @@
  * @param phone - Номер телефона из базы данных
  * @returns Возвращает номер в формате +7 (777) 777-77-77
  */
-export const fixPhoneNumber = (phone: string) => {
+export const fixPhoneNumber = (phone: string): string => {
   return phone?.replace(
     /^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/,
     '+$1 ($2) $3-$4-$5'

@@ -12,7 +12,7 @@ export interface IFormateCall {
  * @param data Принимает отфильтрованный и отсортированный массив звонков
  * @returns Возвращает сгрупперованный массив звонков по датам
  */
-export const getTitleCalls = (data: Array<IResults>) => {
+export const getTitleCalls = (data: Array<IResults>): Array<IFormateCall> => {
   const calls: Array<IFormateCall> = [];
   data.forEach((call) => {
     const currentDate = call.date_notime;

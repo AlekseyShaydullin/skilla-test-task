@@ -7,7 +7,10 @@ import { IContext } from '../types/context';
  * @param value - Принимает контекст
  * @returns Хэндлер сортировки
  */
-export const getHandelSort = (id: string, value: IContext | null) => {
+export const getHandelSort = (
+  id: string,
+  value: IContext | null
+): (() => void) => {
   const handelSort = () => {
     //Если сортируем по Времени
     if (id === 'time' && value) {
