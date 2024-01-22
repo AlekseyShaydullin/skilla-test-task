@@ -12,6 +12,9 @@
   <img src="https://github.com/devicons/devicon/blob/master/icons/eslint/eslint-original.svg" title="Eslint"**alt="Eslint" width="50" height="50"/>&nbsp;
 </div>
 
+### Визуализация проекта:
+![Снимок экрана 2024-01-23 021208](https://github.com/AlekseyShaydullin/skilla-test-task/assets/101606512/33f61fff-f931-4c8b-8926-ef48afee321e)
+
 ### Для локального запуска используйте:
   npm run dev
 
